@@ -1,6 +1,6 @@
 window.Util = {
     //#region 时间日期
-    dateToYYMMDDHHMMSS(date) {
+    dateToYYMMDDHHMMSS: function(date) {
         var y = date.getFullYear();
         var M = ((date.getMonth() + 1) >= 10 ? '' : '0') + (date.getMonth() + 1);
         var d = (date.getDate() >= 10 ? '' : '0') + date.getDate();
@@ -9,32 +9,32 @@ window.Util = {
         var s = (date.getSeconds() >= 10 ? '' : '0') + date.getSeconds();
         return y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s;
     },
-    dateToYYMMDD(date) {
+    dateToYYMMDD: function(date) {
         var y = date.getFullYear();
         var M = ((date.getMonth() + 1) >= 10 ? '' : '0') + (date.getMonth() + 1);
         var d = (date.getDate() >= 10 ? '' : '0') + date.getDate();
         return y + '-' + M + '-' + d;
     },
-    dateToMMDD(date) {
+    dateToMMDD: function(date) {
         var M = ((date.getMonth() + 1) >= 10 ? '' : '0') + (date.getMonth() + 1);
         var d = (date.getDate() >= 10 ? '' : '0') + date.getDate();
         return M + '-' + d;
     },
-    dateToHHMMSS(date) {
+    dateToHHMMSS: function(date) {
         var h = (date.getHours() >= 10 ? '' : '0') + date.getHours();
         var m = (date.getMinutes() >= 10 ? '' : '0') + date.getMinutes();
         var s = (date.getSeconds() >= 10 ? '' : '0') + date.getSeconds();
         return h + ':' + m + ':' + s;
     },
-    stringToDate(str) {
+    stringToDate: function(str) {
         var date = new Date(str.replace(/-/g, '/'));
         return date;
     },
-    addYear(date, year) {
+    addYear: function(date, year) {
         var y = date.getFullYear();
         return new Date(date.setFullYear(y + year));
     },
-    addMonth(date, month) {
+    addMonth: function(date, month) {
         var d1 = date.getDate();
         date.setDate(1);
         date.setMonth(date.getMonth() + month);
@@ -42,71 +42,71 @@ window.Util = {
         date.setDate(Math.min(d1, d2));
         return new Date(date);
     },
-    addDay(date, day) {
+    addDay: function(date, day) {
         var d = date.getDate();
         return new Date(date.setDate(d + day));
     },
-    getYear(date) {
+    getYear: function(date) {
         var y = date.getFullYear();
         return y;
     },
-    getMonth(date) {
+    getMonth: function(date) {
         var M = date.getMonth() + 1;
         return M;
     },
-    getDate(date) {
+    getDate: function(date) {
         var d = date.getDate();
         return d;
     },
-    getHour(date) {
+    getHour: function(date) {
         var h = date.getHours();
         return h;
     },
-    getMinute(date) {
+    getMinute: function(date) {
         var m = date.getMinutes();
         return m;
     },
-    getSecond(date) {
+    getSecond: function(date) {
         var s = date.getSeconds();
         return s;
     },
-    getDayStart(date) {
+    getDayStart: function(date) {
         return new Date((date.getFullYear()) + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' 00:00:00');
     },
-    getDayEnd(date) {
+    getDayEnd: function(date) {
         return new Date((date.getFullYear()) + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' 23:59:59');
     },
-    getWeekStartDay(date) {
+    getWeekStartDay: function(date) {
         var weekday = date.getDay() || 7;
         date.setDate(date.getDate() - weekday + 1);
         return new Date(date);
     },
-    getWeekEndDay(date) {
+    getWeekEndDay: function(date) {
         var endday = this.addDay(this.getWeekStartDay(date), 6);
         return endday;
     },
-    getMonthStartDay(date) {
+    getMonthStartDay: function(date) {
         date.setDate(1);
         return new Date(date);
     },
-    getMonthEndDay(date) {
+    getMonthEndDay: function(date) {
         var y = date.getFullYear();
         var m = date.getMonth() + 1;
         var d1 = new Date(y, m, 1);
         var d2 = this.addDay(d1, -1);
         return d2;
     },
-    getYearStartDay(date) {
+    getYearStartDay: function(date) {
         date.setMonth(0);
         date.setDate(1);
         return new Date(date);
     },
-    getYearEndDay(date) {
+    getYearEndDay: function(date) {
         date.setMonth(11);
         date.setDate(31);
         return new Date(date);
     },
-    secondToHHMMSS(seconds) {
+    secondToHHMMSS: function(seconds) {
         var temp = 0;
         var str = '';
         temp = parseInt(seconds / 3600 + '');
@@ -120,14 +120,14 @@ window.Util = {
     //#endregion
 
     //#region 随机数
-    getBooleanRandom() {
+    getBooleanRandom: function() {
         var i = Math.floor(Math.random() * (1 - 0 + 1) + 0);
         return i === 0 ? false : true;
     },
-    getIntRandom(min, max) {
+    getIntRandom: function(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     },
-    getStringRandom(length, seed) {
+    getStringRandom: function(length, seed) {
         var s = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         if (arguments[1]) {
             s = seed;
@@ -141,10 +141,10 @@ window.Util = {
     //#endregion
 
     //#region web
-    setCookie(name, value) {
+    setCookie: function(name, value) {
         document.cookie = name + '=' + escape(value) + ';path=/';
     },
-    getCookie(name) {
+    getCookie: function(name) {
         var reg = new RegExp('(^| )' + name + '=([^;]*)(;|$)');
         var arr = document.cookie.match(reg);
         if (arr) {
@@ -153,7 +153,7 @@ window.Util = {
             return null;
         }
     },
-    isInnerIp(url) {
+    isInnerIp: function(url) {
         var reg1 = /(http|ftp|https|www):\/\//g;
         url = url.replace(reg1, '');
         var reg2 = /\:+/g;
@@ -174,7 +174,7 @@ window.Util = {
             ((ipNum >= cBegin) && (ipNum <= cEnd)) ||
             ((ipNum >= dBegin) && (ipNum <= dEnd));
     },
-    _getIpNum(ip) {
+    _getIpNum: function(ip) {
         var ipArr = ip.split('.');
         var a = parseInt(ipArr[0]);
         var b = parseInt(ipArr[1]);
@@ -186,32 +186,32 @@ window.Util = {
     //#endregion
 
     //#region util
-    isNull(obj) {
+    isNull: function(obj) {
         return (obj === undefined || obj === null || obj === '') ? true : false;
     },
-    isNumber(obj) {
+    isNumber: function(obj) {
         var reg = /^[0-9]*$/;
         return reg.test(obj);
     },
-    parameterTransfer(value, out) {
+    parameterTransfer: function(value, out) {
         if (this.isNull(value)) {
             return out;
         } else {
             return value;
         }
     },
-    binaryDecode(number, p) {
+    binaryDecode: function(number, p) {
         //从右向左数，第一个数是第一位，p传1，依次类推
         var position = Math.pow(2, p - 1);
         return (number & position) === position ? 1 : 0;
     },
-    binaryDecode2(number, p) {
+    binaryDecode2: function(number, p) {
         //从右向左数，第一个数是第一位，p传1，依次类推
         var origin = 1;
         var position = origin << (p - 1);
         return (number & position) !== 0 ? 1 : 0;
     },
-    fileToBase64(file) {
+    fileToBase64: function(file) {
         //使用方法：this.fileToBase64(file).then(d=>{在这获取结果值});
         return new Promise((resolve, reject) => {
             var reader = new FileReader();
@@ -221,7 +221,7 @@ window.Util = {
             }
         });
     },
-    jsonFormatter(json) {
+    jsonFormatter: function(json) {
         var reg = null;
         var formatted = '';
         var pad = 0;
@@ -275,7 +275,7 @@ window.Util = {
         });
         return formatted;
     },
-    groupBy(array, f) {
+    groupBy: function(array, f) {
         //使用方法：结果值=this.groupBy(array,(x)=>{return [x.分组字段]})
         var groups = {};
         array.forEach((x) => {
@@ -290,15 +290,15 @@ window.Util = {
     //#endregion
 
     //#region 字符串
-    startWith(origin, str) {
+    startWith: function(origin, str) {
         var reg = new RegExp("^" + str);
         return reg.test(origin);
     },
-    endWith(origin, str) {
+    endWith: function(origin, str) {
         var reg = new RegExp(str + "$");
         return reg.test(origin);
     },
-    contains(origin, str) {
+    contains: function(origin, str) {
         return origin.indexOf(str) >= 0;
     },
     //#endregion

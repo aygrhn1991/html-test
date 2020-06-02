@@ -6,16 +6,50 @@
     <title>html,css,js-test</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="./plugin/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="./css/index.css" />
-    <script type="text/javascript" src="./plugin/angularjs/angular.js"></script>
-    <script type="text/javascript" src="./plugin/angularjs/angular-route.js"></script>
-    <script type="text/javascript" src="./plugin/layui/layui.all.js"></script>
+    <script type="text/javascript" src="./plugin/jquery/jquery.js"></script>
+    <script type="text/javascript" src="./plugin/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="./plugin/echarts/echarts.js"></script>
+    <script type="text/javascript" src="./plugin/util/util.js"></script>
     <script type="text/javascript" src="./js/index.js"></script>
 </head>
 
-<body>
+<body style="background:#031f3e">
     <div class="wrapper">
+        <div class="left">
+            <div id="map" style="width:100%;height:100%;"></div>
+        </div>
+        <div class="right">
+            <div>
+                <div>国六</div>
+                <div>新能源</div>
+                <div>车队</div>
+            </div>
+            <div>
+                <div>中通</div>
+                <div>汽研</div>
+            </div>
+            <div>
+                <div>
+                    <div>数据</div>
+                    <div id="data" style="width:100%;height:300px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-8" style="padding:0;">
+
+            </div>
+            <div class="col-xs-4">
+
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <div class="wrapper">
         <div class="panel testing-g6-1">
             <div class="testing-vin">
                 <app-vin [(vin)]="searchModel.vin" [(vid)]="searchModel.vid"></app-vin>
@@ -107,7 +141,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </body>
 
 </html>
