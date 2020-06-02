@@ -1,3 +1,69 @@
+html,
 body {
-    background-color: #eee;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.panel {
+    padding: 10px 10px 15px 10px;
+    background-color: rgba(25, 25, 50, .7);
+}
+
+.testing-fit {
+    height: 100%;
+    max-height: calc(100% - 30px);
+    overflow: auto;
+}
+
+.testing-g6-1 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 30%;
+}
+
+.testing-g6-2 {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    width: 30%;
+}
+
+.testing-g6-3 {
+    position: absolute;
+    top: 380px;
+    left: 10px;
+    bottom: 0;
+    width: 30%;
+    min-height: 170px;
+    margin-bottom: 10px;
+}
+
+.testing-g6-4 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30%;
+    min-width: 500px;
+}
+
+.testing-g6-5 {
+    position: absolute;
+    top: 450px;
+    right: 10px;
+    bottom: 0;
+    width: calc(70% - 30px);
+    min-height: 100px;
+    margin-bottom: 10px;
+}
+
+.testing-g6-5 .testing-content {
+    white-space: nowrap;
 }
