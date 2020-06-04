@@ -30,13 +30,13 @@ body {
     padding-right: 40px;
 }
 
-.left-1 {
+.left-top {
     height: 80px;
     padding-top: 40px;
     text-align: center;
 }
 
-.left-1-block {
+.left-top-block {
     display: inline-block;
     width: 25%;
     margin-right: 5%;
@@ -45,7 +45,7 @@ body {
     border-radius: 5px;
 }
 
-.left-1-left {
+.left-top-block-left {
     float: left;
     width: 80px;
     height: 80px;
@@ -55,18 +55,18 @@ body {
     border-right: 1px solid var(--color);
 }
 
-.left-1-right {
+.left-top-block-right {
     margin-left: 80px;
     text-align: left;
     padding: 8px 0 0 15px;
     line-height: 30px;
 }
 
-.left-1-right>div:first-child {
+.left-top-block-right>div:first-child {
     font-size: 14px;
 }
 
-.left-1-right>div:last-child {
+.left-top-block-right>div:last-child {
     font-size: 24px;
 }
 
@@ -119,11 +119,11 @@ body {
     height: 230px;
 }
 
-.right-1-tab-title {
+.right-tab-title {
     margin: 10px 0;
 }
 
-.right-1-tab-title>div {
+.right-tab-title>div {
     display: inline-block;
     padding: 3px 10px;
     border: 1px solid var(--color);
@@ -131,16 +131,16 @@ body {
     cursor: pointer;
 }
 
-.right-1-tab-title-active {
+.right-tab-title-active {
     background-color: var(--color);
     opacity: .8;
 }
 
-.right-1-tab {
+.right-1-block-wrapper {
     padding: 20px 0;
 }
 
-.right-1-tab-block {
+.right-1-block {
     display: inline-block;
     padding: 20px 0;
     width: 30%;
@@ -150,11 +150,11 @@ body {
     text-align: center;
 }
 
-.right-1-tab-num {
+.right-1-block-num {
     font-size: 24px;
 }
 
-.right-1-tab-text {
+.right-1-block-text {
     font-size: 14px;
 }
 
