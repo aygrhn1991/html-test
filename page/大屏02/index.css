@@ -1,6 +1,9 @@
 :root {
     --bgColor: #031f3e;
-    --color: #29e2f7;
+    --borderColor: #29a5f7;
+    --color: #29a5f7;
+    --jb1: linear-gradient(to top right, #00538f, #032b59);
+    --jb2: linear-gradient(to top, #0c3569, transparent);
 }
 
 html,
@@ -12,163 +15,109 @@ body {
 
 .wrapper {
     position: relative;
-    width: 100%;
     height: 100%;
     color: #fff;
     background: var(--bgColor);
+    padding: 0 40px;
 }
 
-.left {
+.top-left {
     float: left;
-    width: 70%;
-    height: 100%;
+    width: 33%;
+    height: 250px;
+    margin-top: 40px;
+    border-radius: 4px;
+    background-image: var(--jb1);
+    background-size: 100% 100%;
+    background-position: 100% 100%;
 }
 
-.right {
-    margin-left: 70%;
+.top-left-title {
+    padding-left: 20px;
+    line-height: 40px;
+    border-bottom: 1px solid var(--borderColor);
+}
+
+.top-left-text {
+    padding: 20px 0 0 40px;
+    line-height: 35px;
+    height: 190px;
+    background-image: url('./img/top-left-bg.png');
+    background-size: 50% 60%;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+}
+
+.top-right {
+    margin-left: 33%;
+    padding-top: 40px;
     height: 100%;
     padding-right: 40px;
+    text-align: right;
 }
 
-.left-1 {
-    height: 80px;
-    padding-top: 40px;
+.top-right-block {
+    display: inline-block;
+    margin-left: 3%;
+    width: 20%;
+    height: 250px;
+    border-radius: 4px;
+    border: 1px solid var(--borderColor);
+    box-shadow: 0 0 15px var(--borderColor) inset;
     text-align: center;
 }
 
-.left-1-block {
+.top-right-block-num {
+    font-size: 30px;
+    margin-top: 50px;
+}
+
+.top-right-block-img {
     display: inline-block;
-    width: 25%;
-    margin-right: 5%;
-    height: 80px;
-    border: 1px solid var(--color);
-    border-radius: 5px;
+    margin-top: 20px;
+    width: 44px;
+    height: 44px;
 }
 
-.left-1-left {
-    float: left;
-    width: 80px;
-    height: 80px;
-    font-size: 40px;
-    line-height: 75px;
-    color: var(--color);
-    border-right: 1px solid var(--color);
-}
-
-.left-1-right {
-    margin-left: 80px;
-    text-align: left;
-    padding: 8px 0 0 15px;
-    line-height: 30px;
-}
-
-.left-1-right>div:first-child {
+.top-right-block-text {
+    margin-top: 20px;
     font-size: 14px;
-}
-
-.left-1-right>div:last-child {
-    font-size: 24px;
-}
-
-#bar {
-    float: left;
-    width: 25%;
-    height: calc(100% - 80px - 40px);
-}
-
-#map {
-    height: calc(100% - 80px - 40px);
-    margin-left: 25%;
-}
-
-#line {
-    width: 100%;
-    height: calc(100% - 40px);
-}
-
-.title {
-    position: relative;
-    font-size: 16px;
-    font-weight: bold;
     color: var(--color);
-    border-bottom: 1px solid var(--color);
-    line-height: 40px;
-    padding-left: 20px;
 }
 
-.title::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 0;
-    width: 5px;
-    height: 20px;
-    background-color: var(--color);
-}
-
-.right-1 {
-    height: 230px;
-    padding-top: 40px;
-}
-
-.right-2 {
-    height: calc(100% - 230px - 230px - 40px - 40px);
-}
-
-.right-3 {
-    height: 230px;
-}
-
-.right-1-tab-title {
-    margin: 10px 0;
-}
-
-.right-1-tab-title>div {
-    display: inline-block;
-    padding: 3px 10px;
-    border: 1px solid var(--color);
-    box-shadow: 0 0 10px var(--color) inset;
-    cursor: pointer;
-}
-
-.right-1-tab-title-active {
-    background-color: var(--color);
-    opacity: .8;
-}
-
-.right-1-tab {
-    padding: 20px 0;
-}
-
-.right-1-tab-block {
-    display: inline-block;
-    padding: 20px 0;
-    width: 30%;
-    border: 3px solid var(--color);
-    border-radius: 100px;
-    box-shadow: 0 0 30px var(--color) inset;
+.bottom-left {
+    float: left;
+    width: 33%;
+    margin-top: 40px;
     text-align: center;
 }
 
-.right-1-tab-num {
-    font-size: 24px;
+.bottom-left-block {
+    display: inline-block;
+    width: 35%;
+    margin: 0 5%;
+    margin-bottom: 20px;
+    background-image: var(--jb2);
 }
 
-.right-1-tab-text {
+.bottom-left-block-num {
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.bottom-left-block-num>span {
+    font-size: 12px;
+}
+
+.bottom-left-block-img {
+    display: inline-block;
+    margin-top: 10px;
+    width: 44px;
+    height: 44px;
+}
+
+.bottom-left-block-text {
+    margin: 10px 0 20px 0;
     font-size: 14px;
-}
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    line-height: 30px;
-}
-
-.table>tbody>tr {
-    border-bottom: 1px solid var(--color);
-}
-
-.table th {
-    text-align: left;
     color: var(--color);
 }
