@@ -3,3 +3,9 @@
 <a href="#/page2">page2</a>
 <a href="#/page3">page3</a>
 <a href="#/page4">page4</a>
+<button ng-click="openModal()">打开弹窗</button>
+
+<div style="width: 500px;height: 300px;" id="modal">
+    <input ng-model="model.name" />
+    <button ng-click="save()">保存</button>
+</div>
