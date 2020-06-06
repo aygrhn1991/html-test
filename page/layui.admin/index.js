@@ -64,7 +64,8 @@ app.controller('page1Ctrl', function($scope, $http, $rootScope) {
     $scope.openModal = function() {
         layer.open({
             type: 1,
-            content: $('#modal')
+            content: $('#modal'),
+            shade: 0
         });
     };
     $scope.model = {
