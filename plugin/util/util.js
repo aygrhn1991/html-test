@@ -193,6 +193,9 @@ window.Util = {
         var reg = /^[0-9]*$/;
         return reg.test(obj);
     },
+    copyObject: function(obj) {
+        return JSON.parse(JSON.stringify(obj));
+    },
     parameterTransfer: function(value, out) {
         if (this.isNull(value)) {
             return out;
@@ -300,6 +303,22 @@ window.Util = {
     },
     contains: function(origin, str) {
         return origin.indexOf(str) >= 0;
+    },
+    //#endregion
+
+    //#region 项目
+    getSearchObject: function() {
+        var obj = {
+            page: 1,
+            limit: 10,
+            string1: null,
+            string2: null,
+            number1: null,
+            number2: null,
+            datetime1: null,
+            datetime2: null
+        };
+        return this.copyObject(obj);
     },
     //#endregion
 };
