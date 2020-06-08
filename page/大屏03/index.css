@@ -34,6 +34,7 @@ body {
 .left-top-block {
     display: inline-block;
     width: 20%;
+    height: 170px;
     margin: 40px 2%;
     background: var(--jb2);
 }
@@ -58,31 +59,45 @@ body {
 
 #map {
     width: 100%;
-    height: 400px;
+    height: calc(100% - 250px);
 }
 
 .right {
     margin-left: 55%;
+    height: 100%;
 }
 
 .right-top {
-    padding-top: 40px;
+    height: 50%;
     text-align: center;
 }
 
 .right-top-block {
+    position: relative;
     display: inline-block;
-    margin: 0 1%;
-    margin-bottom: 20px;
+    margin: 1%;
     width: 45%;
+    height: 40%;
     border-radius: 4px;
     border: 1px solid var(--borderColor);
     box-shadow: 0 0 15px var(--borderColor) inset;
 }
 
+.right-top-block-1,
+.right-top-block-2 {
+    margin-top: 5%;
+}
+
+.right-top-block-content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translate(0, -50%);
+}
+
 .right-top-block-num {
     font-size: 30px;
-    margin-top: 10px;
 }
 
 .right-top-block-num>span {
@@ -97,24 +112,32 @@ body {
 }
 
 .right-top-block-text {
-    margin: 5px 0 20px 0;
+    margin-top: 5px;
     font-size: 14px;
     color: var(--color);
 }
 
 .right-bottom {
-    padding-top: 20px;
     text-align: center;
+    height: 50%;
 }
 
 .right-bottom-block {
     position: relative;
     display: inline-block;
-    margin: 0 1%;
+    margin: 1%;
     width: 45%;
-    margin-bottom: 20px;
+    height: 40%;
     background: var(--jb1);
     z-index: 0;
+}
+
+.right-bottom-block-content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translate(0, -50%);
 }
 
 .right-bottom-block>img {
@@ -138,7 +161,6 @@ body {
 
 .right-bottom-block-num {
     font-size: 30px;
-    margin-top: 30px;
 }
 
 .right-bottom-block-num>span {
@@ -146,7 +168,7 @@ body {
 }
 
 .right-bottom-block-text {
-    margin: 10px 0 30px 0;
+    margin-top: 10px;
     font-size: 14px;
     color: var(--color);
 }

@@ -17,7 +17,7 @@ $(function() {
             top: '5%',
             left: 'center',
             text: '全国装车量分布',
-            textStyle: { color: '#fff', fontSize: 26 },
+            textStyle: { color: '#fff', fontSize: 20 },
             subtext: '单位：辆',
             subtextStyle: { color: '#fff' },
         },
@@ -54,8 +54,6 @@ $(function() {
     //动态调整大小
     window.onresize = function() {
         map.resize();
-        line.resize();
-        bar.resize();
     };
 
 });
