@@ -16,98 +16,90 @@
 
 <body>
     <div class="wrapper">
-        <div class="top">
-            <div class="top-left">
-                <div class="top-left-title">车队名片</div>
-                <div class="top-left-text">
-                    <div>车队名称：航天科技车队</div>
-                    <div>联系人：航天科技</div>
-                    <div>邮箱：411610370@qq.com</div>
-                    <div>车队地址：黑龙江哈尔滨哈平西路45号</div>
-                </div>
-            </div>
-            <div class="top-right">
-                <div class="top-right-block">
-                    <div class="top-right-block-num">0</div>
-                    <div class="top-right-block-img">
-                        <img src="./img/top-right-block-1.png" />
-                    </div>
-                    <div class="top-right-block-text">入网车辆</div>
-                </div>
-                <div class="top-right-block">
-                    <div class="top-right-block-num">0</div>
-                    <div class="top-right-block-img">
-                        <img src="./img/top-right-block-2.png" />
-                    </div>
-                    <div class="top-right-block-text">昨日入网</div>
-                </div>
-                <div class="top-right-block">
-                    <div class="top-right-block-num">0</div>
-                    <div class="top-right-block-img">
-                        <img src="./img/top-right-block-3.png" />
-                    </div>
-                    <div class="top-right-block-text">今日上线</div>
-                </div>
-                <div class="top-right-block">
-                    <div class="top-right-block-num">0</div>
-                    <div class="top-right-block-img">
-                        <img src="./img/top-right-block-4.png" />
-                    </div>
-                    <div class="top-right-block-text">当前在线</div>
-                </div>
-            </div>
-        </div>
-        <div class="bottom">
-            <div class="bottom-left">
-                <div class="bottom-left-block">
-                    <div class="bottom-left-block-num">0<span>L</span></div>
-                    <div class="bottom-left-block-img">
+        <div class="left">
+            <div class="left-top">
+                <div class="left-top-block">
+                    <div class="left-top-block-num">0</div>
+                    <div class="left-top-block-img">
                         <img src="./img/bottom-left-block-1.png" />
                     </div>
-                    <div class="bottom-left-block-text">昨日怠速油耗</div>
+                    <div class="left-top-block-text">昨日怠速油耗</div>
                 </div>
-                <div class="bottom-left-block">
-                    <div class="bottom-left-block-num">0<span>h</span></div>
-                    <div class="bottom-left-block-img">
+                <div class="left-top-block">
+                    <div class="left-top-block-num">0</div>
+                    <div class="left-top-block-img">
                         <img src="./img/bottom-left-block-2.png" />
                     </div>
-                    <div class="bottom-left-block-text">昨日怠速用时</div>
+                    <div class="left-top-block-text">昨日怠速用时</div>
                 </div>
-                <div class="bottom-left-block">
-                    <div class="bottom-left-block-num">0<span>次</span></div>
-                    <div class="bottom-left-block-img">
+                <div class="left-top-block">
+                    <div class="left-top-block-num">0</div>
+                    <div class="left-top-block-img">
                         <img src="./img/bottom-left-block-3.png" />
                     </div>
-                    <div class="bottom-left-block-text">昨日故障数量</div>
+                    <div class="left-top-block-text">昨日故障数量</div>
                 </div>
-                <div class="bottom-left-block">
-                    <div class="bottom-left-block-num">0<span>km</span></div>
-                    <div class="bottom-left-block-img">
+                <div class="left-top-block">
+                    <div class="left-top-block-num">0</div>
+                    <div class="left-top-block-img">
                         <img src="./img/bottom-left-block-4.png" />
                     </div>
-                    <div class="bottom-left-block-text">昨日运行里程</div>
+                    <div class="left-top-block-text">昨日运行里程</div>
                 </div>
             </div>
-            <div class="bottom-right">
-                <div class="bottom-right-block bottom-right-block-bg-1">
+            <div id="map"></div>
+        </div>
+        <div class="right">
+            <div class="right-top">
+                <div class="right-top-block">
+                    <div class="right-top-block-num">0<span>km</span></div>
+                    <div class="right-top-block-img">
+                        <img src="./img/bottom-left-block-2.png" />
+                    </div>
+                    <div class="right-top-block-text">入网车辆</div>
+                </div>
+                <div class="right-top-block">
+                    <div class="right-top-block-num">0<span>km</span></div>
+                    <div class="right-top-block-img">
+                        <img src="./img/bottom-left-block-2.png" />
+                    </div>
+                    <div class="right-top-block-text">昨日入网</div>
+                </div>
+                <div class="right-top-block">
+                    <div class="right-top-block-num">0<span>km</span></div>
+                    <div class="right-top-block-img">
+                        <img src="./img/bottom-left-block-2.png" />
+                    </div>
+                    <div class="right-top-block-text">今日上线</div>
+                </div>
+                <div class="right-top-block">
+                    <div class="right-top-block-num">0<span>km</span></div>
+                    <div class="right-top-block-img">
+                        <img src="./img/bottom-left-block-2.png" />
+                    </div>
+                    <div class="right-top-block-text">当前在线</div>
+                </div>
+            </div>
+            <div class="right-bottom">
+                <div class="right-bottom-block right-bottom-block-bg-1">
                     <img src="./img/bottom-right-block-1.png" />
-                    <div class="bottom-right-block-num">0<span>km</span></div>
-                    <div class="bottom-right-block-text">昨日上传数据条数</div>
+                    <div class="right-bottom-block-num">0<span>km</span></div>
+                    <div class="right-bottom-block-text">昨日上传数据条数</div>
                 </div>
-                <div class="bottom-right-block bottom-right-block-bg-2">
+                <div class="right-bottom-block right-bottom-block-bg-2">
                     <img src="./img/bottom-right-block-2.png" />
-                    <div class="bottom-right-block-num">0<span>km</span></div>
-                    <div class="bottom-right-block-text">昨日ODO里程</div>
+                    <div class="right-bottom-block-num">0<span>km</span></div>
+                    <div class="right-bottom-block-text">昨日ODO里程</div>
                 </div>
-                <div class="bottom-right-block bottom-right-block-bg-3">
+                <div class="right-bottom-block right-bottom-block-bg-3">
                     <img src="./img/bottom-right-block-3.png" />
-                    <div class="bottom-right-block-num">0<span>km</span></div>
-                    <div class="bottom-right-block-text">昨日上传数据条数</div>
+                    <div class="right-bottom-block-num">0<span>km</span></div>
+                    <div class="right-bottom-block-text">昨日上传数据条数</div>
                 </div>
-                <div class="bottom-right-block bottom-right-block-bg-4">
+                <div class="right-bottom-block right-bottom-block-bg-4">
                     <img src="./img/bottom-right-block-4.png" />
-                    <div class="bottom-right-block-num">0<span>km</span></div>
-                    <div class="bottom-right-block-text">昨日上传数据条数</div>
+                    <div class="right-bottom-block-num">0<span>km</span></div>
+                    <div class="right-bottom-block-text">昨日上传数据条数</div>
                 </div>
             </div>
         </div>

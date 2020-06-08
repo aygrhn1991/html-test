@@ -56,7 +56,7 @@ body {
 
 .top-right-block {
     display: inline-block;
-    margin-left: 3%;
+    margin: 0 1%;
     width: 20%;
     height: 250px;
     border-radius: 4px;
@@ -132,10 +132,12 @@ body {
     margin: 0 5%;
     margin-bottom: 40px;
     background: var(--jb1);
+    z-index: 0;
 }
 
 .bottom-right-block>img {
     position: absolute;
+    z-index: -1;
 }
 
 .bottom-right-block-bg-1>img {
