@@ -21,6 +21,14 @@ body {
     padding: 0 40px;
 }
 
+.block-content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translate(0, -50%);
+}
+
 .left {
     float: left;
     width: 55%;
@@ -88,14 +96,6 @@ body {
     margin-top: 5%;
 }
 
-.right-top-block-content {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    transform: translate(0, -50%);
-}
-
 .right-top-block-num {
     font-size: 30px;
 }
@@ -130,14 +130,6 @@ body {
     height: 40%;
     background: var(--jb1);
     z-index: 0;
-}
-
-.right-bottom-block-content {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    transform: translate(0, -50%);
 }
 
 .right-bottom-block>img {

@@ -21,6 +21,14 @@ body {
     padding: 0 40px;
 }
 
+.block-content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translate(0, -50%);
+}
+
 .top-left {
     float: left;
     width: 33%;
@@ -102,14 +110,6 @@ body {
     background: var(--jb2);
 }
 
-.bottom-left-block-content {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    transform: translate(0, -50%);
-}
-
 .bottom-left-block-num {
     font-size: 30px;
 }
@@ -174,14 +174,6 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-}
-
-.bottom-right-block-content {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    transform: translate(0, -50%);
 }
 
 .bottom-right-block-num {
