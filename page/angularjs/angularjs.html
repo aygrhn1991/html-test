@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>html,css,js-test</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <script type="text/javascript" src="../../plugin/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../../plugin/angularjs/angular.js"></script>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/angular.js/1.5.8/angular.js"></script> -->
+    <script type="text/javascript" src="../../plugin/util/util.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('ctrl', function($scope, $http) {
+            console.log('come in');
+            $http.post('http://localhost/home/test').success(function(data) {
+                console.log(data);
+            }).error(function(error) {
+                console.log(error);
+            });
+        });
+    </script>
+</head>
+
+<body ng-app="app" ng-controller="ctrl">
+</body>
+
+</html>
