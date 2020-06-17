@@ -68,9 +68,13 @@ body {
     border-right: 2px solid var(--border-tip);
 }
 
-.border1,
+.border1 {
+    position: relative;
+}
+
 .border2 {
     position: relative;
+    border: 1px solid var(--borderColor);
 }
 
 .border1::before {
@@ -148,7 +152,6 @@ body {
     float: left;
     width: 24%;
     height: calc(100% - 70px);
-    border: 1px solid var(--borderColor);
     margin: 0 1%;
 }
 
@@ -261,7 +264,6 @@ body {
     float: left;
     width: 48%;
     height: calc(100% - 70px);
-    border: 1px solid var(--borderColor);
 }
 
 .center-1 {
@@ -351,38 +353,31 @@ body {
     float: left;
     width: 58%;
     height: 100%;
-    border: 1px solid red;
 }
 
 .center-3-right {
     margin-left: 60%;
     height: 100%;
-    border: 1px solid yellow;
 }
 
 #chart1 {
     height: 50%;
-    border: 1px solid gray;
 }
 
 #chart2 {
     height: 50%;
-    border: 1px solid pink;
 }
 
 #chart3 {
     height: 50%;
-    border: 1px solid orange;
 }
 
 #chart4 {
     height: 50%;
-    border: 1px solid green;
 }
 
 .right {
     height: calc(100% - 70px);
-    border: 1px solid #fff;
     margin: 0 1%;
     margin-left: 75%;
 }
