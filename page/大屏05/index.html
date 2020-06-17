@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>大屏05</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="./index.css" />
+    <script type="text/javascript" src="../../plugin/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../../plugin/echarts/echarts.js"></script>
+    <script type="text/javascript" src="../../plugin/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="../../plugin/util/util.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="left">
+            <div class="left-top">
+                <div class="left-top-block">
+                    <div class="left-top-block-num">0</div>
+                    <div class="left-top-block-img">
+                        <img src="./img/car-all.png" />
+                    </div>
+                    <div class="left-top-block-text">入网车辆</div>
+                </div>
+                <div class="left-top-block">
+                    <div class="left-top-block-num">0</div>
+                    <div class="left-top-block-img">
+                        <img src="./img/car-in.png" />
+                    </div>
+                    <div class="left-top-block-text">昨日入网</div>
+                </div>
+                <div class="left-top-block">
+                    <div class="left-top-block-num">0</div>
+                    <div class="left-top-block-img">
+                        <img src="./img/car-on.png" />
+                    </div>
+                    <div class="left-top-block-text">今日上线</div>
+                </div>
+                <div class="left-top-block">
+                    <div class="left-top-block-num">0</div>
+                    <div class="left-top-block-img">
+                        <img src="./img/car-online.png" />
+                    </div>
+                    <div class="left-top-block-text">当前在线</div>
+                </div>
+            </div>
+            <div id="map"></div>
+        </div>
+        <div class="right">
+            <div class="right-block">
+                <div class="block-content">
+                    <div class="right-block-text">运行里程</div>
+                    <div class="right-block-num">0<span>km</span></div>
+                    <div class="chart" id="chart1"></div>
+                </div>
+            </div>
+            <div class="right-block">
+                <div class="block-content">
+                    <div class="right-block-text">上传数据</div>
+                    <div class="right-block-num">0<span>条</span></div>
+                    <div class="chart" id="chart2"></div>
+                </div>
+            </div>
+            <div class="right-block">
+                <div class="block-content">
+                    <div class="right-block-text">故障数量</div>
+                    <div class="right-block-num">0<span>次</span></div>
+                    <div class="chart" id="chart3"></div>
+                </div>
+            </div>
+            <div class="right-block">
+                <div class="block-content">
+                    <div class="right-block-text">行驶油耗</div>
+                    <div class="right-block-num">0<span>L</span></div>
+                    <div class="chart" id="chart4"></div>
+                </div>
+            </div>
+            <div class="right-block">
+                <div class="block-content">
+                    <div class="right-block-text">行驶时长</div>
+                    <div class="right-block-num">0<span>h</span></div>
+                    <div class="chart" id="chart5"></div>
+                </div>
+            </div>
+            <div class="right-block">
+                <div class="block-content">
+                    <div class="right-block-text">运行排放</div>
+                    <div class="right-block-num">0<span>g</span></div>
+                    <div class="chart" id="chart6"></div>
+                </div>
+            </div>
+            <div class="right-block">
+                <div class="block-content">
+                    <div class="right-block-text">怠速油耗</div>
+                    <div class="right-block-num">0<span>L</span></div>
+                    <div class="chart" id="chart7"></div>
+                </div>
+            </div>
+            <div class="right-block">
+                <div class="block-content">
+                    <div class="right-block-text">怠速用时</div>
+                    <div class="right-block-num">0<span>h</span></div>
+                    <div class="chart" id="chart8"></div>
+                </div>
+            </div>
+            <div class="right-block">
+                <div class="block-content">
+                    <div class="right-block-text">怠速排放</div>
+                    <div class="right-block-num">0<span>L</span></div>
+                    <div class="chart" id="chart9"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
