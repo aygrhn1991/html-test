@@ -86,7 +86,7 @@ $(function() {
             boundaryGap: false,
             axisLabel: { color: '#fff' },
             axisLine: { lineStyle: { color: axisColor } },
-            axisTick: { show: true },
+            axisTick: { show: false },
             splitLine: { show: false },
             data: lineDataX,
         }],
@@ -96,7 +96,7 @@ $(function() {
             nameTextStyle: { color: '#fff' },
             axisLabel: { color: '#fff' },
             axisLine: { lineStyle: { color: axisColor } },
-            axisTick: { show: true },
+            axisTick: { show: false },
             splitLine: { lineStyle: { color: axisColor } }
         }],
         series: [{

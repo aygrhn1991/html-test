@@ -56,7 +56,22 @@ app.run(function($rootScope, $location, $timeout) {
         e.select = true;
     };
 });
-app.controller('page1Ctrl', function($scope, $http, $rootScope) {});
+app.controller('page1Ctrl', function($scope, $http, $rootScope) {
+    $scope.open = function() {
+        $scope.index = layer.open({
+            type: 1,
+            content: $('#modal'),
+            // shade: 0,
+            title: 'add',
+            success: function(layero) {
+
+            }
+        });
+    };
+    $scope.close = function() {
+        layer.close($scope.index);
+    };
+});
 app.controller('page2Ctrl', function($scope, $http, $rootScope) {});
 app.controller('page3Ctrl', function($scope, $http, $rootScope) {});
 app.controller('page4Ctrl', function($scope, $http, $rootScope) {});
