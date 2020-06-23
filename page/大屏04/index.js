@@ -153,21 +153,23 @@ $(function() {
         chart2.setOption(lineOption2);
     }, 5000);
     //构造柱状图数据
-    var total = 1000;
-    var percent = 700;
+    var barTotal = 1000;
+    var barPercent = 700;
     var barOption1 = {
         color: [color],
         title: {
             top: '5%',
             left: 'center',
             text: '数据库容量',
-            textStyle: { color: '#fff', fontSize: 14 }
+            textStyle: { color: '#fff', fontSize: 14 },
+            subtext: barPercent + '/' + barTotal + 'T',
+            subtextStyle: { color: '#fff', fontSize: 16 },
         },
         grid: {
-            top: '40%',
+            top: '30%',
             left: '0',
             right: '0',
-            bottom: '25%',
+            bottom: '15%',
             containLabel: true
         },
         xAxis: [{
@@ -189,11 +191,7 @@ $(function() {
             symbolSize: ['40%', 35],
             symbolOffset: [0, -17],
             z: 13,
-            data: [{
-                value: total,
-                symbolPosition: 'end',
-                itemStyle: { color: 'rgba(0,226,248,.95)' }
-            }]
+            data: [{ value: barTotal, symbolPosition: 'end', itemStyle: { color: 'rgba(0,226,248,.95)' } }]
         }, {
             name: '柱子中间圆',
             type: 'pictorialBar',
@@ -201,15 +199,10 @@ $(function() {
             symbolOffset: [0, -17],
             z: 12,
             data: [{
-                value: percent,
+                value: barPercent,
                 symbolPosition: 'end',
                 itemStyle: { color: 'rgba(30,175,243,.95)' },
-                label: {
-                    show: true,
-                    position: 'inside',
-                    textStyle: { color: '#fff', fontSize: 16 },
-                    formatter: (percent / total * 100).toFixed(0) + '%',
-                },
+                label: { show: true, position: 'inside', textStyle: { color: '#fff', fontSize: 16 }, formatter: (barPercent / barTotal * 100).toFixed(0) + '%' },
             }]
         }, {
             name: '柱子下圆',
@@ -217,146 +210,111 @@ $(function() {
             symbolSize: ['40%', 35],
             symbolOffset: [0, 17],
             z: 11,
-            data: [{
-                value: total,
-                symbolPosition: 'start',
-                itemStyle: { color: '#438afe' }
-            }]
+            data: [{ value: barTotal, symbolPosition: 'start', itemStyle: { color: '#438afe' } }]
         }, {
             name: '底部内圈颜色',
             type: 'pictorialBar',
             symbolSize: ['60%', 45],
             symbolOffset: [0, 32],
             z: 1,
-            data: [{
-                value: total,
-                itemStyle: { color: 'transparent', borderColor: '#43bafe', borderWidth: 5 }
-            }]
+            data: [{ value: barTotal, itemStyle: { color: 'transparent', borderColor: '#43bafe', borderWidth: 5 } }]
         }, {
             name: '底部外圈颜色',
             type: 'pictorialBar',
             symbolSize: ['80%', 70],
             symbolOffset: [0, 47],
             z: 1,
-            data: [{
-                value: total,
-                trueVal: '98',
-                itemStyle: { color: 'transparent', borderColor: '#43bafe', borderWidth: 5, borderType: 'dashed' }
-            }]
+            data: [{ value: barTotal, itemStyle: { color: 'transparent', borderColor: '#43bafe', borderWidth: 5, borderType: 'dashed' } }]
         }, {
             type: 'bar',
             barWidth: '32.5%',
             barGap: '-100%',
             z: 10,
-            data: [{
-                    name: '柱状图峰值',
-                    value: total,
-                    label: {
-                        show: true,
-                        position: 'top',
-                        distance: 25,
-                        textStyle: { color: '#fff', fontSize: 16 },
-                        formatter: percent + '/' + total + 'T',
-                    },
-                    itemStyle: { color: 'rgba(67,138,254,.5)' }
-                },
-                {
-                    name: '柱状图实际值',
-                    value: percent,
-                    itemStyle: { color: 'rgba(67,138,254,.9)' }
-                }
-            ]
+            data: [{ name: '柱状图峰值', value: barTotal, itemStyle: { color: 'rgba(67,138,254,.5)' } }, { name: '柱状图实际值', value: barPercent, itemStyle: { color: 'rgba(67,138,254,.9)' } }]
         }]
     };
     var chart3 = echarts.init(document.getElementById('chart3'));
     chart3.setOption(barOption1);
     //构造饼图数据
-    var value = 0.2;
-    var data = [value, value, value];
+    var piePercent = 0.2;
+    var pieData = [piePercent, piePercent, piePercent];
     var pieOption = {
-        // title: {
-        //     top: '5%',
-        //     left: 'center',
-        //     text: '文件存储空间',
-        //     textStyle: { color: '#fff', fontSize: 14 }
-        // },
         series: [{
             type: 'liquidFill',
             radius: '70%',
             center: ['50%', '50%'],
-            //  shape: 'roundRect',
-            data: data,
-            backgroundStyle: {
-                color: {
-                    type: 'radial',
-                    x: 0.5,
-                    y: 0.5,
-                    r: 0.7,
-                    colorStops: [{
-                        offset: 0,
-                        color: '#030a27' // 0% 处的颜色
-                    }, {
-                        offset: 1,
-                        color: '#1b4976' // 100% 处的颜色
-                    }],
-                    globalCoord: false
-                },
-            },
-            label: { show: true },
-            outline: {
-                borderDistance: 0,
-
-                itemStyle: {
-                    borderWidth: 2,
-                    borderColor: {
-                        type: 'linear',
-                        x: 0,
-                        y: 0,
-                        x2: 0,
-                        y2: 1,
-                        colorStops: [{
-                            offset: 0,
-                            color: 'rgba(41, 165, 247, 1)'
-                        }, {
-                            offset: 0.5,
-                            color: 'rgba(41, 165, 247, 1)'
-                        }, {
-                            offset: 1,
-                            color: 'rgba(41, 165, 247, 1)' //圆外框线颜色
-                        }],
-                        globalCoord: false
-                    },
-                    shadowBlur: 10,
-                    shadowColor: '#000',
-                }
-            },
-            // color: {
-            //     type: 'linear',
-            //     x: 0,
-            //     y: 0,
-            //     x2: 0,
-            //     y2: 1,
-            //     colorStops: [{
-            //         offset: 1,
-            //         color: 'rgba(74, 255, 255, 0)'
-            //     }, {
-            //         offset: 0.5,
-            //         color: 'rgba(74, 255, 255, .2)'
-            //     }, {
-            //         offset: 0,
-            //         color: 'rgba(74, 255, 255, 1)' //波浪颜色
-            //     }],
-            //     globalCoord: false
-            // },
-            // label: {
-            //     normal: {
-            //         formatter: '',
-            //     }
-            // }
+            data: pieData,
+            backgroundStyle: { color: { type: 'radial', x: 0.5, y: 0.5, r: 0.7, colorStops: [{ offset: 0, color: '#030a27' }, { offset: 1, color: '#1b4976' }] } },
+            label: { show: true, textStyle: { color: '#fff', fontSize: 16 } },
+            outline: { borderDistance: 0, itemStyle: { borderWidth: 2, borderColor: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: 'rgba(41, 165, 247, 1)' }, { offset: 0.5, color: 'rgba(41, 165, 247, 1)' }, { offset: 1, color: 'rgba(41, 165, 247, 1)' }] } } },
+            color: [{ type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 1, color: 'rgba(74, 255, 255, 0)' }, { offset: 0.5, color: 'rgba(74, 255, 255, .2)' }, { offset: 0, color: 'rgba(74, 255, 255, 1)' }] }],
         }]
     };
     var chart4 = echarts.init(document.getElementById('chart4'));
     chart4.setOption(pieOption);
+    var barDataX = [];
+    var barDataY = [];
+    for (var i = 0; i < 7; i++) {
+        barDataX.push(Util.dateToMMDD(Util.addDay(new Date(), -i)));
+        barDataY.push(Util.getIntRandom(1000, 3000));
+    }
+    var barOption2 = {
+        title: {
+            top: '5%',
+            left: 'center',
+            text: '车辆上线趋势图',
+            textStyle: { color: '#fff', fontSize: 14 },
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { type: 'shadow' },
+            formatter: '{b}<br>{c}条'
+        },
+        grid: {
+            top: '25%',
+            left: '5%',
+            right: '15%',
+            bottom: '5%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            name: '时间',
+            nameTextStyle: { color: '#fff' },
+            axisLabel: { color: '#fff' },
+            axisLine: { lineStyle: { color: axisColor } },
+            axisTick: { show: false },
+            splitLine: { show: false },
+            data: barDataX,
+        },
+        yAxis: [{
+            type: 'value',
+            name: '辆',
+            nameTextStyle: { color: '#fff' },
+            axisLabel: { color: '#fff' },
+            axisLine: { lineStyle: { color: axisColor } },
+            axisTick: { show: false },
+            splitLine: { show: false }
+        }, {
+            type: 'value',
+            min: 20,
+            max: 100,
+            splitNumber: 10,
+            axisLabel: { show: false },
+            axisLine: { show: false },
+            axisTick: { show: false },
+            splitLine: { show: false },
+            splitArea: { show: true, areaStyle: { color: ['rgba(250,250,250,0.0)', 'rgba(250,250,250,0.05)'] } }
+        }],
+        series: [{
+            type: 'bar',
+            barWidth: 15,
+            itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#00FFE3' }, { offset: 1, color: '#4693EC' }]) },
+            data: barDataY
+        }]
+    };
+    var chart5 = echarts.init(document.getElementById('chart5'));
+    chart5.setOption(barOption2);
     //动态调整大小
     window.onresize = function() {
         // map.resize();
@@ -364,6 +322,6 @@ $(function() {
         chart2.resize();
         chart3.resize();
         chart4.resize();
+        chart5.resize();
     };
-
 });

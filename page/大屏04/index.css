@@ -369,15 +369,11 @@ body {
 }
 
 #chart3 {
-    height: 50%;
+    height: calc(100% - 5% - 210px);
 }
 
 .chart4 {
-    height: 50%;
-    background: url('./img/chart4-bg.png');
-    background-size: 200px 160px;
-    background-repeat: no-repeat;
-    background-position: center 50px;
+    height: 210px;
 }
 
 .chart4-title {
@@ -385,16 +381,56 @@ body {
     text-align: center;
     font-size: 14px;
     font-weight: bold;
+    margin-top: 5%;
 }
 
 #chart4 {
     width: 200px;
     height: 160px;
     margin: 0 auto;
+    background: url('./img/chart4-bg.png');
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+#chart5 {
+    height: 200px;
+    margin-top: 100px;
 }
 
 .right {
     height: calc(100% - 70px);
     margin: 0 1%;
     margin-left: 75%;
+}
+
+.right-1 {
+    text-align: center;
+    margin: 20px 0;
+    background: url('./img/shadow.png');
+    background-size: 80% 80%;
+    background-position: center 0;
+    background-repeat: no-repeat;
+}
+
+.right-1-block {
+    display: inline-block;
+    width: 27%;
+    height: 70px;
+    margin: 0 1%;
+}
+
+.right-1-block-num {
+    font-size: 24px;
+    color: var(--color-yellow);
+}
+
+.right-1-block-num>span {
+    font-size: 12px;
+}
+
+.right-1-block-text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--color);
 }
