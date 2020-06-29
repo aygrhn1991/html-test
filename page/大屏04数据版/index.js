@@ -1,4 +1,5 @@
 $(function() {
+    var url = 'http://192.168.40.17:10018';
     var month = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
     var province = ['北京', '天津', '河北', '山西', '内蒙古', '辽宁', '吉林', '黑龙江', '上海', '江苏', '浙江', '安徽', '福建', '江西', '山东', '河南', '湖北', '湖南', '重庆', '四川', '贵州', '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆', '广东', '广西', '海南', '香港', '澳门', '台湾'];
     var color = '#29e2f7';
@@ -13,7 +14,7 @@ $(function() {
         $('.date').text(Util.dateToYYYYMMDD(new Date()) + ' ' + Util.dateToWeekDay(new Date()) + ' ' + Util.dateToHHMMSS(new Date()));
     });
     $.ajax({
-        url: 'http://192.168.40.17:10018/statCtrl/statDataShow/-1',
+        url: url + '/statCtrl/statDataShow/-1',
         dataType: 'json',
         contentType: 'application/json',
         headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
@@ -31,7 +32,7 @@ $(function() {
         }
     });
     $.ajax({
-        url: `http://192.168.40.17:10018/statCtrl/statDataShow/-5`,
+        url: url + `/statCtrl/statDataShow/-5`,
         dataType: 'json',
         contentType: 'application/json',
         headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
@@ -50,7 +51,7 @@ $(function() {
         $(this).addClass('center-1-block-active')
         type = $(this).attr('type');
         $.ajax({
-            url: `http://192.168.40.17:10018/statCtrl/statDataShow/${type}`,
+            url: url + `/statCtrl/statDataShow/${type}`,
             dataType: 'json',
             contentType: 'application/json',
             headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
@@ -65,7 +66,7 @@ $(function() {
                 $('#c_onum').text(data.data[0].c_onum);
                 $('#c_r_ut').text((data.data[0].c_r_ut / 10000).toFixed(0));
                 $('#c_tnum').text(data.data[0].c_tnum);
-                $('#percent').text(data.data[0].c_file_num);
+                $('#percent').text((data.data[0].c_file_size / 1024 / 1024).toFixed(0));
                 $('#total').text(data.data[0].c_file_size);
                 chart3.setOption(getChart3Option(data.data[0].c_hbase_u, data.data[0].c_hbase_t));
                 chart4.setOption(getChart4Option(data.data[0].c_file_num, data.data[0].c_file_size));
@@ -77,7 +78,7 @@ $(function() {
 
     function getChart12Data(e) {
         $.ajax({
-            url: `http://192.168.40.17:10018/statCtrl/statDataShow/${e}`,
+            url: url + `/statCtrl/statDataShow/${e}`,
             dataType: 'json',
             contentType: 'application/json',
             headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
@@ -87,7 +88,7 @@ $(function() {
                 var dataY2 = [];
                 data.data.forEach(function(x) {
                     dataX.push(Util.dateToHHMMSS(new Date(x.c_attm)));
-                    dataY1.push(x.c_datanum);
+                    dataY1.push(x.c_calnum <= 0 ? 0 : x.c_calnum);
                     dataY2.push(x.c_onum);
                 });
                 chart1Option.xAxis[0].data = dataX;
@@ -102,7 +103,7 @@ $(function() {
 
     function getSumData() {
         $.ajax({
-            url: `http://192.168.40.17:10018/statCtrl/statDataShow/-2`,
+            url: url + `/statCtrl/statDataShow/-2`,
             dataType: 'json',
             contentType: 'application/json',
             headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
@@ -230,7 +231,7 @@ $(function() {
                 left: 'center',
                 text: '数据库容量',
                 textStyle: { color: '#fff', fontSize: 14 },
-                subtext: percent + '/' + total + 'T',
+                subtext: percent + '/' + total + 'GB',
                 subtextStyle: { color: '#fff', fontSize: 16 },
             },
             grid: {

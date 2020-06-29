@@ -226,19 +226,25 @@ body {
 
 .left-3-block1 {
     background: url('./img/border2-1.png');
-    background-size: 100% 100%;
+    background-size: 100% 80%;
+    background-repeat: no-repeat;
+    background-position-y: 50%;
     color: var(--color-blue);
 }
 
 .left-3-block2 {
     background: url('./img/border2-2.png');
-    background-size: 100% 100%;
+    background-size: 100% 80%;
+    background-repeat: no-repeat;
+    background-position-y: 50%;
     color: var(--color-red);
 }
 
 .left-3-block3 {
     background: url('./img/border2-3.png');
-    background-size: 100% 100%;
+    background-size: 100% 80%;
+    background-repeat: no-repeat;
+    background-position-y: 50%;
     color: var(--color-blue);
 }
 
@@ -257,7 +263,7 @@ body {
     color: #fff;
     font-size: 14px;
     margin-right: 10%;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .center {
