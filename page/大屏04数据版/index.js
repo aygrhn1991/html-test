@@ -9,6 +9,9 @@ $(function() {
     var chart3 = echarts.init(document.getElementById('chart3'));
     var chart4 = echarts.init(document.getElementById('chart4'));
     var chart5 = echarts.init(document.getElementById('chart5'));
+    setInterval(function() {
+        $('.date').text(Util.dateToYYYYMMDD(new Date()) + ' ' + Util.dateToWeekDay(new Date()) + ' ' + Util.dateToHHMMSS(new Date()));
+    });
     $.ajax({
         url: 'http://192.168.40.17:10018/statCtrl/statDataShow/-1',
         dataType: 'json',
@@ -68,7 +71,7 @@ $(function() {
                 chart4.setOption(getChart4Option(data.data[0].c_file_num, data.data[0].c_file_size));
             }
         });
-        getChart12Data(type == 2 ? -3 : -4);
+        getChart12Data(type == 2 ? -4 : -3);
     });
     $('#start').click();
 
@@ -373,7 +376,7 @@ $(function() {
         };
     }
     var chartTimer = setInterval(function() {
-        getChart12Data(type == 2 ? -3 : -4);
+        getChart12Data(type == 2 ? -4 : -3);
         getSumData();
     }, 10000);
     //动态调整大小
