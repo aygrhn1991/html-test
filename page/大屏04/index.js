@@ -157,19 +157,11 @@ $(function() {
     var barPercent = 700;
     var barOption1 = {
         color: [color],
-        title: {
-            top: '5%',
-            left: 'center',
-            text: '数据库容量',
-            textStyle: { color: '#fff', fontSize: 14 },
-            subtext: barPercent + '/' + barTotal + 'T',
-            subtextStyle: { color: '#fff', fontSize: 16 },
-        },
         grid: {
-            top: '30%',
+            top: '10%',
             left: '0',
             right: '0',
-            bottom: '15%',
+            bottom: '18%',
             containLabel: true
         },
         xAxis: [{
