@@ -26,6 +26,11 @@ window.Util = {
         var s = (date.getSeconds() >= 10 ? '' : '0') + date.getSeconds();
         return h + ':' + m + ':' + s;
     },
+    dateToHHMM: function(date) {
+        var h = (date.getHours() >= 10 ? '' : '0') + date.getHours();
+        var m = (date.getMinutes() >= 10 ? '' : '0') + date.getMinutes();
+        return h + ':' + m;
+    },
     dateToWeekDay: function(date) {
         var days = '日一二三四五六';
         return '星期' + days.charAt(date.getDay());
@@ -308,11 +313,15 @@ window.Util = {
     contains: function(origin, str) {
         return origin.indexOf(str) >= 0;
     },
+    numberSplit: function(num) {
+        return num.toFixed(0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+    },
     //#endregion
 
     //#region 项目
     getSearchObject: function() {
         var obj = {
+            loading: false,
             page: 1,
             limit: 10,
             string1: null,

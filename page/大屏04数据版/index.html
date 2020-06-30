@@ -6,21 +6,21 @@
     <title>大屏04数据版</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="./index.css" />
+    <!-- <link rel="stylesheet" href="./index.css" />
     <script type="text/javascript" src="../../plugin/jquery/jquery.js"></script>
     <script type="text/javascript" src="../../plugin/echarts/echarts.js"></script>
     <script type="text/javascript" src="../../plugin/echarts/echarts-liquidfill.js"></script>
     <script type="text/javascript" src="../../plugin/echarts/map/js/china.js"></script>
     <script type="text/javascript" src="../../plugin/util/util.js"></script>
-    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript" src="./index.js"></script> -->
 
-    <!-- <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./index.css" />
     <script type="text/javascript" src="./jquery.js"></script>
     <script type="text/javascript" src="./echarts.js"></script>
     <script type="text/javascript" src="./echarts-liquidfill.js"></script>
     <script type="text/javascript" src="./china.js"></script>
     <script type="text/javascript" src="./util.js"></script>
-    <script type="text/javascript" src="./index.js"></script> -->
+    <script type="text/javascript" src="./index.js"></script>
 </head>
 
 <body>
@@ -29,39 +29,42 @@
             <div class="city-and-weather">当前城市：哈尔滨市&nbsp;&nbsp;&nbsp;多云16℃ ~ 23℃</div>
             <div class="head-title">航天科技车联网云平台数据中心</div>
             <div class="date"></div>
+            <img src="./img/full.png" class="full">
+            <img src="./img/close.png" class="close">
         </div>
         <div class="left border2">
+            <div class="border-shadow"></div>
             <div class="title border1">平台数据统计</div>
             <div class="left-1">
                 <div class="left-1-block">
-                    <div class="left-1-block-text">总里程</div>
-                    <div class="left-1-block-num"><label id="tmil">0</label><span>万km</span></div>
+                    <div class="block-text">总里程</div>
+                    <div class="block-num"><label id="tmil">0</label><span>万km</span></div>
                 </div>
                 <div class="left-1-block">
-                    <div class="left-1-block-text">总排放</div>
-                    <div class="left-1-block-num"><label id="tnox">0</label><span>万kg</span></div>
+                    <div class="block-text">总排放</div>
+                    <div class="block-num"><label id="tnox">0</label><span>万kg</span></div>
                 </div>
                 <div class="left-1-block">
-                    <div class="left-1-block-text">总能耗</div>
-                    <div class="left-1-block-num"><label id="toil">0</label><span>万L</span></div>
+                    <div class="block-text">总能耗</div>
+                    <div class="block-num"><label id="toil">0</label><span>万L</span></div>
                 </div>
                 <div class="left-1-block">
-                    <div class="left-1-block-text">总运行时长</div>
-                    <div class="left-1-block-num"><label id="tdur">0</label><span>万h</span></div>
+                    <div class="block-text">总运行时长</div>
+                    <div class="block-num"><label id="tdur">0</label><span>万h</span></div>
                 </div>
             </div>
             <div class="left-2">
-                <div class="left-2-block border">
-                    <div class="left-2-block-text">总怠速时长</div>
-                    <div class="left-2-block-num"><label id="ddur">0</label><span>万h</span></div>
+                <div class="left-2-block block border">
+                    <div class="block-text">总怠速时长</div>
+                    <div class="block-num"><label id="ddur">0</label><span>万h</span></div>
                 </div>
-                <div class="left-2-block border">
-                    <div class="left-2-block-text">总怠速能耗</div>
-                    <div class="left-2-block-num"><label id="doil">0</label><span>万L</span></div>
+                <div class="left-2-block block border">
+                    <div class="block-text">总怠速能耗</div>
+                    <div class="block-num"><label id="doil">0</label><span>万L</span></div>
                 </div>
-                <div class="left-2-block border">
-                    <div class="left-2-block-text">总怠速排放</div>
-                    <div class="left-2-block-num"><label id="dnox">0</label><span>万kg</span></div>
+                <div class="left-2-block block border">
+                    <div class="block-text">总怠速排放</div>
+                    <div class="block-num"><label id="dnox">0</label><span>万kg</span></div>
                 </div>
             </div>
             <div class="left-3">
@@ -86,91 +89,107 @@
             </div>
         </div>
         <div class="center border2">
+            <div class="border-shadow"></div>
             <div class="title border1">分中心数据统计</div>
             <div class="center-1">
-                <div class="center-1-line"></div>
-                <div class="center-1-block center-1-block-null"></div>
-                <div class="center-1-block center-1-block-null"></div>
-                <div class="center-1-block center-1-block-fix" type="2" id="start"><span>一汽解放<br>分中心</span></div>
-                <div class="center-1-block center-1-block-fix" type="1"><span>中通<br>分中心</span></div>
-                <div class="center-1-block center-1-block-null"></div>
-                <div class="center-1-block center-1-block-null"></div>
+                <div class="center-1-block">
+                    <div class="center-1-block-item center-1-block-item1 center-active" id="yq">一汽解放分中心</div>
+                    <div class="center-1-block-item center-1-block-item2" id="zt">中通客车分中心</div>
+                </div>
             </div>
             <div class="center-2 border">
-                <div class="center-2-block">
-                    <div class="center-2-block-text">入网车辆总数</div>
-                    <div class="center-2-block-num"><label id="c_tnum">0</label><span>辆</span></div>
+                <div class="center-2-block block">
+                    <div class="block-text">入网车辆</div>
+                    <div class="block-num"><label id="c_tnum">0</label><span>辆</span></div>
                 </div>
-                <div class="center-2-block">
-                    <div class="center-2-block-text">当日上线车辆</div>
-                    <div class="center-2-block-num"><label id="c_dnum">0</label><span>辆</span></div>
+                <div class="center-2-block block">
+                    <div class="block-text">昨日上线车辆</div>
+                    <div class="block-num"><label id="c_dnum">0</label><span>辆</span></div>
                 </div>
-                <div class="center-2-block">
-                    <div class="center-2-block-text">当前在线车辆</div>
-                    <div class="center-2-block-num"><label id="c_onum">0</label><span>辆</span></div>
+                <div class="center-2-block block">
+                    <div class="block-text">昨日上传数据</div>
+                    <div class="block-num"><label id="c_engnum">0</label><span>万条</span></div>
                 </div>
-                <div class="center-2-block">
-                    <div class="center-2-block-text">当日上传数据</div>
-                    <div class="center-2-block-num"><label id="c_engnum">0</label><span>万条</span></div>
+                <div class="center-2-block block">
+                    <div class="block-text">昨日故障</div>
+                    <div class="block-num"><label id="c_dtc_num">0</label><span>万次</span></div>
                 </div>
-                <div class="center-2-block">
-                    <div class="center-2-block-text">当日故障数量</div>
-                    <div class="center-2-block-num"><label id="c_dtc_num">0</label><span>万次</span></div>
+                <div class="center-2-block block">
+                    <div class="block-text">昨日ODO里程</div>
+                    <div class="block-num"><label id="c_mil">0</label><span>万km</span></div>
                 </div>
-                <div class="center-2-block">
-                    <div class="center-2-block-text">当日ODO里程</div>
-                    <div class="center-2-block-num"><label id="c_mil">0</label><span>万km</span></div>
+                <div class="center-2-block block">
+                    <div class="block-text">昨日行驶油耗</div>
+                    <div class="block-num"><label id="c_oil">0</label><span>万L</span></div>
                 </div>
-                <div class="center-2-block">
-                    <div class="center-2-block-text">当日行驶油耗</div>
-                    <div class="center-2-block-num"><label id="c_oil">0</label><span>万L</span></div>
+                <div class="center-2-block block">
+                    <div class="block-text">昨日行驶用时</div>
+                    <div class="block-num"><label id="c_r_ut">0</label><span>h</span></div>
                 </div>
-                <div class="center-2-block">
-                    <div class="center-2-block-text">当日行驶用时</div>
-                    <div class="center-2-block-num"><label id="c_r_ut">0</label><span>万h</span></div>
+                <div class="center-2-block block">
+                    <div class="block-text">昨日运行排放</div>
+                    <div class="block-num"><label id="c_scrdown_r">0</label><span>kg</span></div>
                 </div>
-                <div class="center-2-block">
-                    <div class="center-2-block-text">当日怠速油耗</div>
-                    <div class="center-2-block-num"><label id="c_idl_oil">0</label><span>万L</span></div>
+                <div class="center-2-block block">
+                    <div class="block-text">昨日尿素消耗</div>
+                    <div class="block-num"><label>0</label><span>万L</span></div>
                 </div>
-                <div class="center-2-block">
-                    <div class="center-2-block-text">当日怠速用时</div>
-                    <div class="center-2-block-num"><label id="c_idl_ut">0</label><span>万h</span></div>
+                <div class="center-2-block block">
+                    <div class="block-text">昨日怠速油耗</div>
+                    <div class="block-num"><label id="c_idl_oil">0</label><span>L</span></div>
+                </div>
+                <div class="center-2-block block">
+                    <div class="block-text">昨日怠速用时</div>
+                    <div class="block-num"><label id="c_idl_ut">0</label><span>h</span></div>
+                </div>
+                <div class="center-2-block block">
+                    <div class="block-text">昨日怠速排放</div>
+                    <div class="block-num"><label id="c_scrdown_d">0</label><span>kg</span></div>
                 </div>
             </div>
-            <div class="center-3">
-                <div class="center-3-left border">
-                    <div id="chart1"></div>
-                    <div id="chart2"></div>
+            <div class="center-3 border">
+                <div class="center-3-left">
+                    <div class="block-content">
+                        <div class="center-3-title">
+                            <div>数据库容量</div>
+                            <div><span id="hbase-p">700</span><label>/</label><span id="hbase-t">1000</span>GB</div>
+                        </div>
+                        <div id="chart3"></div>
+                    </div>
                 </div>
-                <div class="center-3-right border">
-                    <div class="chart4">
-                        <div class="chart4-title">
+                <div class="center-3-right">
+                    <div class="block-content">
+                        <div class="center-3-title">
                             <div>数据存储空间</div>
-                            <div><label id="percent"></label>/<label id="total"></label></div>
+                            <div><span id="file-p">700</span><label>/</label><span id="file-t">1000</span>GB</div>
                         </div>
                         <div id="chart4"></div>
                     </div>
-                    <div id="chart3"></div>
                 </div>
             </div>
         </div>
         <div class="right border2">
+            <div class="border-shadow"></div>
             <div class="title border1">运维数据</div>
             <div class="right-1">
-                <div class="right-1-block border">
-                    <div class="right-1-block-text">当前在线车辆</div>
-                    <div class="right-1-block-num"><label id="onum">0</label><span>辆</span></div>
+                <div class="right-1-block block border">
+                    <div class="block-text">当前在线车辆</div>
+                    <div class="block-num"><label id="onum">0</label><span>辆</span></div>
                 </div>
-                <div class="right-1-block border">
-                    <div class="right-1-block-text">今日上线车辆</div>
-                    <div class="right-1-block-num"><label id="dnum">0</label><span>辆</span></div>
+                <div class="right-1-block block border">
+                    <div class="block-text">今日上线车辆</div>
+                    <div class="block-num"><label id="dnum">0</label><span>辆</span></div>
                 </div>
-                <div class="right-1-block border">
-                    <div class="right-1-block-text">接收数据总数</div>
-                    <div class="right-1-block-num"><label id="datanum">0</label><span>万条</span></div>
+                <div class="right-1-block block border">
+                    <div class="block-text">接收数据</div>
+                    <div class="block-num"><label id="datanum">0</label><span>万条</span></div>
                 </div>
                 <div id="chart5"></div>
+            </div>
+            <div class="right-2 border">
+                <div class="right2-title">一汽解放</div>
+                <div id="chart1"></div>
+                <div id="chart2"></div>
             </div>
         </div>
     </div>

@@ -111,9 +111,9 @@ body {
 
 .border-shadow {
     position: absolute;
-    bottom: -10px;
+    bottom: -6px;
     width: 100%;
-    height: 20px;
+    height: 10px;
     background: url(./img/border-shadow.png);
     background-size: 100% 100%;
 }

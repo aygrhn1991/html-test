@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'lcd';
+    src: url('./font/lcd.eot');
+    src: url('./font/lcd.eot?#iefix') format('embedded-opentype'), url('./font/lcd.woff') format('woff'), url('./font/lcd.ttf') format('truetype'), url('./font/lcd.svg#lcd') format('svg');
+}
+
 :root {
     --color-blue: #2cd1fa;
     --color-yellow: #e9ad1b;
@@ -20,6 +26,34 @@ body {
     height: 100%;
     color: #fff;
     background: url('./img/bg.png');
+}
+
+.block {
+    position: relative;
+    display: inline-block;
+    height: 110px;
+    margin: 0 1%;
+    border: 1px solid var(--borderColor);
+    background: rgba(10, 62, 131, .2);
+}
+
+.block-text {
+    margin-top: 30px;
+    font-size: 14px;
+    color: var(--color);
+}
+
+.block-num {
+    font-size: 30px;
+    color: var(--color-yellow);
+}
+
+.block-num>span {
+    font-size: 12px;
+}
+
+.block-num>label {
+    font-family: 'lcd';
 }
 
 .block-content {
@@ -75,6 +109,16 @@ body {
 .border2 {
     position: relative;
     border: 1px solid var(--borderColor);
+    box-shadow: 0 0 100px #0a3e83 inset;
+}
+
+.border-shadow {
+    position: absolute;
+    bottom: -6px;
+    width: 100%;
+    height: 10px;
+    background: url(./img/border-shadow.png);
+    background-size: 100% 100%;
 }
 
 .border1::before {
@@ -145,7 +189,26 @@ body {
 .date {
     position: absolute;
     top: 30px;
-    right: 40px;
+    right: 90px;
+}
+
+.full {
+    position: absolute;
+    top: 27px;
+    right: 47px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.close {
+    display: none;
+    position: absolute;
+    top: 27px;
+    right: 47px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 }
 
 .left {
@@ -171,45 +234,12 @@ body {
     background-size: 100% 100%;
 }
 
-.left-1-block-num {
-    font-size: 24px;
-    color: var(--color-blue);
-}
-
-.left-1-block-num>span {
-    font-size: 12px;
-}
-
-.left-1-block-text {
-    margin-top: 30px;
-    font-size: 14px;
-    color: var(--color);
-}
-
 .left-2 {
     text-align: center;
 }
 
 .left-2-block {
-    display: inline-block;
     width: 27%;
-    height: 90px;
-    margin: 0 1%;
-}
-
-.left-2-block-num {
-    font-size: 24px;
-    color: var(--color-yellow);
-}
-
-.left-2-block-num>span {
-    font-size: 12px;
-}
-
-.left-2-block-text {
-    margin-top: 20px;
-    font-size: 14px;
-    color: var(--color);
 }
 
 .left-3 {
@@ -226,7 +256,7 @@ body {
 
 .left-3-block1 {
     background: url('./img/border2-1.png');
-    background-size: 100% 80%;
+    background-size: 100% 70%;
     background-repeat: no-repeat;
     background-position-y: 50%;
     color: var(--color-blue);
@@ -234,7 +264,7 @@ body {
 
 .left-3-block2 {
     background: url('./img/border2-2.png');
-    background-size: 100% 80%;
+    background-size: 100% 70%;
     background-repeat: no-repeat;
     background-position-y: 50%;
     color: var(--color-red);
@@ -242,14 +272,15 @@ body {
 
 .left-3-block3 {
     background: url('./img/border2-3.png');
-    background-size: 100% 80%;
+    background-size: 100% 70%;
     background-repeat: no-repeat;
     background-position-y: 50%;
     color: var(--color-blue);
 }
 
 .left-3-block-num {
-    font-size: 24px;
+    font-family: 'lcd';
+    font-size: 30px;
     float: left;
     margin-left: 30%;
 }
@@ -275,47 +306,34 @@ body {
 .center-1 {
     position: relative;
     text-align: center;
+    margin-top: 10px;
 }
 
 .center-1-block {
-    position: relative;
-    display: inline-block;
-    width: 70px;
-    height: 60px;
-    background: url('./img/six.png');
+    width: 500px;
+    background: url('./img/center-bg.png');
     background-size: 100% 100%;
-    margin: 0 4%;
-    font-size: 12px;
-    color: #aaa;
-    z-index: 1;
-}
-
-.center-1-block>span {
-    margin-top: 15px;
-    display: inline-block;
-}
-
-.center-1-block-null {
-    width: 34px;
-    height: 30px;
-}
-
-.center-1-block:hover,
-.center-1-block-active {
-    transform: scale(1.2, 1.2);
-    color: #ddd;
-    cursor: pointer;
-}
-
-.center-1-line {
-    position: absolute;
-    width: 80%;
-    left: 10%;
-    height: 0;
-    top: 30px;
-    border-top: 1px dashed var(--borderColor);
     margin: 0 auto;
-    z-index: 0;
+}
+
+.center-1-block-item {
+    width: 150px;
+    display: inline-block;
+    cursor: pointer;
+    line-height: 50px;
+}
+
+.center-1-block-item1 {
+    margin-right: 26px;
+}
+
+.center-1-block-item2 {
+    margin-left: 26px;
+}
+
+.center-active {
+    background: url('./img/center-active.png');
+    background-size: 100% 100%;
 }
 
 .center-2 {
@@ -326,73 +344,70 @@ body {
 }
 
 .center-2-block {
-    position: relative;
-    display: inline-block;
-    width: 17%;
-    height: 70px;
-    margin: 5px 1%;
-    border: 1px solid var(--borderColor);
+    width: 21%;
+    margin: 10px 1%;
 }
 
-.center-2-block-num {
-    font-size: 24px;
+.center-2-block .block-num {
     color: var(--color-blue);
 }
 
-.center-2-block-num>span {
-    font-size: 12px;
-}
-
-.center-2-block-text {
-    margin-top: 10px;
-    font-size: 14px;
-    color: var(--color);
-}
-
 .center-3 {
-    height: calc(100% - 325px);
+    height: calc(100% - 565px);
     width: 95%;
     margin: 0 auto;
 }
 
 .center-3-left {
+    position: relative;
     float: left;
-    width: 58%;
+    width: 50%;
     height: 100%;
 }
 
 .center-3-right {
-    margin-left: 60%;
+    position: relative;
+    margin-left: 50%;
     height: 100%;
 }
 
-#chart1 {
-    height: 50%;
+.center-3-title {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
+.center-3-title>div:last-child {
+    font-size: 20px;
+}
+
+.center-3-title>div:last-child>span {
+    font-size: 26px;
+    font-family: 'lcd';
+}
+
+.center-3-title>div:last-child>span:first-child {
+    color: var(--color-blue);
+}
+
+.center-3-title>div:last-child>label {
+    position: relative;
+    top: -3px;
+    left: 3px;
+}
+
+#chart1,
 #chart2 {
-    height: 50%;
+    height: calc(50% - 20px);
 }
 
 #chart3 {
-    height: calc(100% - 5% - 210px);
-}
-
-.chart4 {
-    height: 210px;
-}
-
-.chart4-title {
-    height: 50px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-    margin-top: 5%;
+    height: 260px;
 }
 
 #chart4 {
-    width: 200px;
-    height: 160px;
+    width: 340px;
+    height: 260px;
     margin: 0 auto;
     background: url('./img/chart4-bg.png');
     background-size: 100% 100%;
@@ -401,7 +416,7 @@ body {
 
 #chart5 {
     height: 200px;
-    margin-top: 100px;
+    margin-top: 80px;
 }
 
 .right {
@@ -420,23 +435,22 @@ body {
 }
 
 .right-1-block {
-    display: inline-block;
-    width: 27%;
-    height: 70px;
-    margin: 0 1%;
+    width: 28%;
 }
 
-.right-1-block-num {
-    font-size: 24px;
-    color: var(--color-yellow);
+.right-2 {
+    height: calc(100% - 480px);
+    width: 95%;
+    margin: 0 auto;
 }
 
-.right-1-block-num>span {
+.right2-title {
     font-size: 12px;
-}
-
-.right-1-block-text {
-    margin-top: 10px;
-    font-size: 14px;
-    color: var(--color);
+    line-height: 36px;
+    text-align: center;
+    text-shadow: 0px 0px 10px #fff;
+    background: url('./img/right-title.png');
+    background-repeat: no-repeat;
+    background-size: 50% 100%;
+    background-position: center;
 }

@@ -1,17 +1,45 @@
 $(function() {
     var url = 'http://192.168.40.17:10018';
+    var url = '/iov';
     var month = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
     var province = ['北京', '天津', '河北', '山西', '内蒙古', '辽宁', '吉林', '黑龙江', '上海', '江苏', '浙江', '安徽', '福建', '江西', '山东', '河南', '湖北', '湖南', '重庆', '四川', '贵州', '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆', '广东', '广西', '海南', '香港', '澳门', '台湾'];
     var color = '#29e2f7';
     var axisColor = '#063374';
-    var type = 2;
+    var pt = 'yq';
     var chart1 = echarts.init(document.getElementById('chart1'));
     var chart2 = echarts.init(document.getElementById('chart2'));
     var chart3 = echarts.init(document.getElementById('chart3'));
     var chart4 = echarts.init(document.getElementById('chart4'));
     var chart5 = echarts.init(document.getElementById('chart5'));
     setInterval(function() {
-        $('.date').text(Util.dateToYYYYMMDD(new Date()) + ' ' + Util.dateToWeekDay(new Date()) + ' ' + Util.dateToHHMMSS(new Date()));
+        $('.date').text(Util.dateToYYYYMMDD(new Date()) + ' ' + Util.dateToWeekDay(new Date()) + ' ' + Util.dateToHHMM(new Date()));
+    });
+    $('.full').click(function() {
+        var element = document.documentElement;
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        }
+        $(this).hide();
+        $('.close').show();
+    });
+    $('.close').click(function() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+        $(this).hide();
+        $('.full').show();
     });
     $.ajax({
         url: url + '/statCtrl/statDataShow/-1',
@@ -19,16 +47,16 @@ $(function() {
         contentType: 'application/json',
         headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
         success: function(data) {
-            $('#ddur').text((data.data[0].ddur / 10000).toFixed(0));
-            $('#dnox').text((data.data[0].dnox / 1000 / 10000).toFixed(0));
-            $('#doil').text((data.data[0].doil / 10000).toFixed(0));
-            $('#fnum').text((data.data[0].fnum / 10000).toFixed(0));
-            $('#tdur').text((data.data[0].tdur / 10000).toFixed(0));
-            $('#tengnum').text((data.data[0].tengnum / 10000).toFixed(0));
-            $('#tmil').text((data.data[0].tmil / 10000).toFixed(0));
-            $('#tnox').text((data.data[0].tnox / 1000 / 10000).toFixed(0));
-            $('#toil').text((data.data[0].toil / 10000).toFixed(0));
-            $('#tvehnum').text(data.data[0].tvehnum);
+            $('#ddur').text(Util.numberSplit(data.data[0].ddur / 3600 / 10000));
+            $('#dnox').text(Util.numberSplit(data.data[0].dnox / 1000 / 10000));
+            $('#doil').text(Util.numberSplit(data.data[0].doil / 10000));
+            $('#fnum').text(Util.numberSplit(data.data[0].fnum / 10000));
+            $('#tdur').text(Util.numberSplit(data.data[0].tdur / 3600 / 10000));
+            $('#tengnum').text(Util.numberSplit(data.data[0].tengnum / 10000));
+            $('#tmil').text(Util.numberSplit(data.data[0].tmil / 10000));
+            $('#tnox').text(Util.numberSplit(data.data[0].tnox / 1000 / 10000));
+            $('#toil').text(Util.numberSplit(data.data[0].toil / 10000));
+            $('#tvehnum').text(Util.numberSplit(data.data[0].tvehnum));
         }
     });
     $.ajax({
@@ -46,39 +74,38 @@ $(function() {
             chart5.setOption(getChart5Option(dataX, dataY));
         }
     });
-    $('.center-1-block').click(function() {
-        $(this).siblings('div').removeClass('center-1-block-active');
-        $(this).addClass('center-1-block-active')
-        type = $(this).attr('type');
+
+    function getOemData(oem) {
         $.ajax({
-            url: url + `/statCtrl/statDataShow/${type}`,
+            url: url + `/statCtrl/statDataShow/${oem}`,
             dataType: 'json',
             contentType: 'application/json',
             headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
             success: function(data) {
-                $('#c_dnum').text(data.data[0].c_dnum);
-                $('#c_dtc_num').text((data.data[0].c_dtc_num / 10000).toFixed(0));
-                $('#c_engnum').text((data.data[0].c_engnum / 10000).toFixed(0));
-                $('#c_idl_oil').text((data.data[0].c_idl_oil / 10000).toFixed(0));
-                $('#c_idl_ut').text((data.data[0].c_idl_ut / 10000).toFixed(0));
-                $('#c_mil').text((data.data[0].c_mil / 10000).toFixed(0));
-                $('#c_oil').text((data.data[0].c_oil / 10000).toFixed(0));
-                $('#c_onum').text(data.data[0].c_onum);
-                $('#c_r_ut').text((data.data[0].c_r_ut / 10000).toFixed(0));
-                $('#c_tnum').text(data.data[0].c_tnum);
-                $('#percent').text((data.data[0].c_file_size / 1024 / 1024).toFixed(0));
-                $('#total').text(data.data[0].c_file_size);
+                $('#c_tnum').text(Util.numberSplit(data.data[0].c_tnum));
+                $('#c_dnum').text(Util.numberSplit(data.data[0].c_dnum));
+                $('#c_engnum').text(Util.numberSplit(data.data[0].c_engnum / 10000));
+                $('#c_dtc_num').text(Util.numberSplit(data.data[0].c_dtc_num / 10000));
+                $('#c_mil').text(Util.numberSplit(data.data[0].c_mil / 10000));
+                $('#c_oil').text(Util.numberSplit(data.data[0].c_oil / 10000));
+                $('#c_r_ut').text(Util.numberSplit(data.data[0].c_r_ut / 3600));
+                $('#c_scrdown_r').text(Util.numberSplit(data.data[0].c_scrdown_r / 1000));
+                $('#c_idl_oil').text(Util.numberSplit(data.data[0].c_idl_oil));
+                $('#c_idl_ut').text(Util.numberSplit(data.data[0].c_idl_ut / 3600));
+                $('#c_scrdown_d').text(Util.numberSplit(data.data[0].c_scrdown_d / 1000));
+                $('#file-p').text(Util.numberSplit(data.data[0].c_file_size / 1024 / 1024));
+                $('#file-t').text(Util.numberSplit(data.data[0].c_disk_size));
+                $('#hbase-p').text(Util.numberSplit(data.data[0].c_hbase_u));
+                $('#hbase-t').text(Util.numberSplit(data.data[0].c_hbase_t));
                 chart3.setOption(getChart3Option(data.data[0].c_hbase_u, data.data[0].c_hbase_t));
-                chart4.setOption(getChart4Option(data.data[0].c_file_num, data.data[0].c_file_size));
+                chart4.setOption(getChart4Option(data.data[0].c_file_size / 1024 / 1024, data.data[0].c_disk_size));
             }
         });
-        getChart12Data(type == 2 ? -4 : -3);
-    });
-    $('#start').click();
+    }
 
-    function getChart12Data(e) {
+    function getChart12Data(oem) {
         $.ajax({
-            url: url + `/statCtrl/statDataShow/${e}`,
+            url: url + `/statCtrl/statDataShow/${oem}`,
             dataType: 'json',
             contentType: 'application/json',
             headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
@@ -87,7 +114,7 @@ $(function() {
                 var dataY1 = [];
                 var dataY2 = [];
                 data.data.forEach(function(x) {
-                    dataX.push(Util.dateToHHMMSS(new Date(x.c_attm)));
+                    dataX.push(Util.dateToHHMM(new Date(x.c_attm)));
                     dataY1.push(x.c_calnum <= 0 ? 0 : x.c_calnum);
                     dataY2.push(x.c_onum);
                 });
@@ -100,6 +127,23 @@ $(function() {
             }
         });
     }
+    $('#yq').click(function() {
+        pt = 'yq';
+        $('.right2-title').text('一汽解放分中心');
+        $(this).siblings('div').removeClass('center-active');
+        $(this).addClass('center-active');
+        getOemData(2);
+        getChart12Data(-4);
+    });
+    $('#zt').click(function() {
+        pt = 'zt';
+        $('.right2-title').text('中通客车分中心');
+        $(this).siblings('div').removeClass('center-active');
+        $(this).addClass('center-active');
+        getOemData(1);
+        getChart12Data(-3);
+    });
+    $('#yq').click();
 
     function getSumData() {
         $.ajax({
@@ -108,21 +152,13 @@ $(function() {
             contentType: 'application/json',
             headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
             success: function(data) {
-                $('#onum').text(data.data[0].onum);
-                $('#dnum').text(data.data[0].dnum);
-                $('#datanum').text((data.data[0].datanum / 10000).toFixed(0));
+                $('#onum').text(Util.numberSplit(data.data[0].onum));
+                $('#dnum').text(Util.numberSplit(data.data[0].dnum));
+                $('#datanum').text(Util.numberSplit(data.data[0].datanum / 10000));
             }
         });
     };
     getSumData();
-    //构造柱状图数据
-    var barDataX = [];
-    var barDataY = [];
-    for (var i = 0; i < 7; i++) {
-        barDataX.push(Util.dateToMMDD(Util.addDay(new Date(), -i)));
-        barDataY.push(Util.getIntRandom(1000, 3000));
-    }
-
     //图表参数
     var chart1Option = {
         color: [color],
@@ -184,7 +220,7 @@ $(function() {
         tooltip: {
             trigger: 'axis',
             axisPointer: { type: 'line' },
-            formatter: '{b}<br>{c}条'
+            formatter: '{b}<br>{c}辆'
         },
         grid: {
             top: '25%',
@@ -226,19 +262,11 @@ $(function() {
     function getChart3Option(percent, total) {
         return {
             color: [color],
-            title: {
-                top: '5%',
-                left: 'center',
-                text: '数据库容量',
-                textStyle: { color: '#fff', fontSize: 14 },
-                subtext: percent + '/' + total + 'GB',
-                subtextStyle: { color: '#fff', fontSize: 16 },
-            },
             grid: {
-                top: '30%',
+                top: '8%',
                 left: '0',
                 right: '0',
-                bottom: '15%',
+                bottom: '18%',
                 containLabel: true
             },
             xAxis: [{
@@ -310,7 +338,7 @@ $(function() {
                 type: 'liquidFill',
                 radius: '70%',
                 center: ['50%', '50%'],
-                data: [percent / total, percent / total, percent / total],
+                data: [Math.ceil(percent * 100 / total) / 100, Math.ceil(percent * 100 / total) / 100, Math.ceil(percent * 100 / total) / 100],
                 backgroundStyle: { color: { type: 'radial', x: 0.5, y: 0.5, r: 0.7, colorStops: [{ offset: 0, color: '#030a27' }, { offset: 1, color: '#1b4976' }] } },
                 label: { show: true, textStyle: { color: '#fff', fontSize: 16 } },
                 outline: { borderDistance: 0, itemStyle: { borderWidth: 2, borderColor: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: 'rgba(41, 165, 247, 1)' }, { offset: 0.5, color: 'rgba(41, 165, 247, 1)' }, { offset: 1, color: 'rgba(41, 165, 247, 1)' }] } } },
@@ -330,7 +358,7 @@ $(function() {
             tooltip: {
                 trigger: 'axis',
                 axisPointer: { type: 'shadow' },
-                formatter: '{b}<br>{c}条'
+                formatter: '{b}<br>{c}辆'
             },
             grid: {
                 top: '25%',
@@ -377,9 +405,18 @@ $(function() {
         };
     }
     var chartTimer = setInterval(function() {
-        getChart12Data(type == 2 ? -4 : -3);
         getSumData();
-    }, 10000);
+        // if (pt == 'yq') {
+        //     getChart12Data(-4);
+        //     $('#zt').click();
+        //     return;
+        // }
+        // if (pt == 'zt') {
+        //     getChart12Data(-3);
+        //     $('#yq').click();
+        //     return;
+        // }
+    }, 30000);
     //动态调整大小
     window.onresize = function() {
         chart1.resize();
@@ -388,4 +425,5 @@ $(function() {
         chart4.resize();
         chart5.resize();
     };
+
 });
