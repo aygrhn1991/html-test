@@ -13,6 +13,7 @@
     <script>
         var app = angular.module('app', []);
         app.controller('ctrl', function($scope, $http) {
+
             $scope.model = [{
                 partA: {
                     start: null,
@@ -27,11 +28,17 @@
                     end: null,
                 }
             }];
+            $scope.data = [];
+            for (var i = 0; i < 10; i++) {
+                var m = Util.copyObject($scope.model);
+                m.partA.start = Util.addDay(Util.stringToDate())
+                $scope.data.push(m);
+            }
             $scope.groupA = [];
             $scope.groupB = [];
             $scope.groupC = [];
             $scope.groupAOption = {
-                start: null,
+                start: new Date(),
                 end: null,
             };
             $scope.groupBOption = {
@@ -42,6 +49,9 @@
                 start: null,
                 end: null,
             };
+            $scope.start = function() {
+
+            };
         });
     </script>
 </head>
@@ -49,14 +59,17 @@
 <body ng-app="app" ng-controller="ctrl">
     <div class="container">
         <div class="row">
+            <button class="btn btn-default" ng-click="start()">开始</button>
+        </div>
+        <div class="row">
             <div class="col-xs-4">
-
+                <div ng-repeat="item in groupA"></div>
             </div>
             <div class="col-xs-4">
-
+                <div ng-repeat="item in groupB"></div>
             </div>
             <div class="col-xs-4">
-
+                <div ng-repeat="item in groupC"></div>
             </div>
         </div>
     </div>
