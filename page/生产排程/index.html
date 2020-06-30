@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>生产排程</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="../../plugin/bootstrap/css/bootstrap.css" />
+    <script type="text/javascript" src="../../plugin/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../../plugin/angularjs/angular.js"></script>
+    <script type="text/javascript" src="../../plugin/util/util.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('ctrl', function($scope, $http) {
+            $scope.model = [{
+                partA: {
+                    start: null,
+                    end: null,
+                },
+                partB: {
+                    start: null,
+                    end: null,
+                },
+                partC: {
+                    start: null,
+                    end: null,
+                }
+            }];
+            $scope.groupA = [];
+            $scope.groupB = [];
+            $scope.groupC = [];
+            $scope.groupAOption = {
+                start: null,
+                end: null,
+            };
+            $scope.groupBOption = {
+                start: null,
+                end: null,
+            };
+            $scope.groupCOption = {
+                start: null,
+                end: null,
+            };
+        });
+    </script>
+</head>
+
+<body ng-app="app" ng-controller="ctrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4">
+
+            </div>
+            <div class="col-xs-4">
+
+            </div>
+            <div class="col-xs-4">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
