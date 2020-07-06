@@ -12,7 +12,26 @@ $(function() {
     var chart4 = echarts.init(document.getElementById('chart4'));
     var chart5 = echarts.init(document.getElementById('chart5'));
     setInterval(function() {
-        $('.date').text(Util.dateToYYYYMMDD(new Date()) + ' ' + Util.dateToWeekDay(new Date()) + ' ' + Util.dateToHHMM(new Date()));
+        var date = new Date();
+        var days = '日一二三四五六';
+        $('.date').text(
+            date.getFullYear() + '-' +
+            (date.getMonth() + 1) + '-' +
+            date.getDate() + ' ' +
+            '星期' + days.charAt(date.getDay()) + ' ' +
+            date.getHours() + ':' +
+            date.getMinutes() + ':' +
+            date.getSeconds()
+        );
+    }, 1000);
+    $.ajax({
+        url: url + `/statCtrl/getTQYB?t=${new Date().getTime()}`,
+        dataType: 'json',
+        contentType: 'application/json',
+        headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
+        success: function(data) {
+            $('.city-and-weather').text('当前城市：' + data.cityInfo.city + ' ' + data.data.forecast[0].type + ' ' + data.data.forecast[0].low + ' ' + data.data.forecast[0].high);
+        }
     });
     $('.full').click(function() {
         var element = document.documentElement;
@@ -42,7 +61,7 @@ $(function() {
         $('.full').show();
     });
     $.ajax({
-        url: url + '/statCtrl/statDataShow/-1',
+        url: url + `/statCtrl/statDataShow/-1?t=${new Date().getTime()}`,
         dataType: 'json',
         contentType: 'application/json',
         headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
@@ -60,7 +79,7 @@ $(function() {
         }
     });
     $.ajax({
-        url: url + `/statCtrl/statDataShow/-5`,
+        url: url + `/statCtrl/statDataShow/-5?t=${new Date().getTime()}`,
         dataType: 'json',
         contentType: 'application/json',
         headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
@@ -77,7 +96,7 @@ $(function() {
 
     function getOemData(oem) {
         $.ajax({
-            url: url + `/statCtrl/statDataShow/${oem}`,
+            url: url + `/statCtrl/statDataShow/${oem}?t=${new Date().getTime()}`,
             dataType: 'json',
             contentType: 'application/json',
             headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
@@ -105,7 +124,7 @@ $(function() {
 
     function getChart12Data(oem) {
         $.ajax({
-            url: url + `/statCtrl/statDataShow/${oem}`,
+            url: url + `/statCtrl/statDataShow/${oem}?t=${new Date().getTime()}`,
             dataType: 'json',
             contentType: 'application/json',
             headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
@@ -147,7 +166,7 @@ $(function() {
 
     function getSumData() {
         $.ajax({
-            url: url + `/statCtrl/statDataShow/-2`,
+            url: url + `/statCtrl/statDataShow/-2?t=${new Date().getTime()}`,
             dataType: 'json',
             contentType: 'application/json',
             headers: { access_token: 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNiIsInN1YiI6InN5aCIsImVudC5pZCI6MiwiZW50Lm5hbWUiOiLkuIDmsb0iLCJwbGF0IjoxLCJleHAiOjE2MjQ4Mzg1NDYsIm5iZiI6MTU5MzIxNjE0Nn0.JxapKePHelnPe6B01wih56KTJhQiVVKoO1r2wiltJT0' },
@@ -260,6 +279,11 @@ $(function() {
     };
 
     function getChart3Option(percent, total) {
+        var barOption1CircleData = [{
+            value: [0, 0],
+            symbolSize: [150, 40],
+            itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#01d7ed' }, { offset: 1, color: '#01d7ed' }]), opacity: .95 },
+        }];
         return {
             color: [color],
             grid: {
@@ -309,19 +333,16 @@ $(function() {
                 z: 11,
                 data: [{ value: total, symbolPosition: 'start', itemStyle: { color: '#438afe' } }]
             }, {
-                name: '底部内圈颜色',
-                type: 'pictorialBar',
-                symbolSize: ['60%', 45],
-                symbolOffset: [0, 32],
-                z: 1,
-                data: [{ value: total, itemStyle: { color: 'transparent', borderColor: '#43bafe', borderWidth: 5 } }]
+                type: 'effectScatter',
+                symbolSize: function(val) { return Math.max(val[2] / 100, 8); },
+                showEffectOn: 'render',
+                rippleEffect: { brushType: 'stroke' },
+                hoverAnimation: true,
+                data: barOption1CircleData,
             }, {
-                name: '底部外圈颜色',
-                type: 'pictorialBar',
-                symbolSize: ['80%', 70],
-                symbolOffset: [0, 47],
-                z: 1,
-                data: [{ value: total, itemStyle: { color: 'transparent', borderColor: '#43bafe', borderWidth: 5, borderType: 'dashed' } }]
+                type: 'effectScatter',
+                symbolSize: function(val) { return Math.max(val[2] / 200, 8); },
+                data: barOption1CircleData,
             }, {
                 type: 'bar',
                 barWidth: '32.5%',
@@ -406,17 +427,17 @@ $(function() {
     }
     var chartTimer = setInterval(function() {
         getSumData();
-        // if (pt == 'yq') {
-        //     getChart12Data(-4);
-        //     $('#zt').click();
-        //     return;
-        // }
-        // if (pt == 'zt') {
-        //     getChart12Data(-3);
-        //     $('#yq').click();
-        //     return;
-        // }
-    }, 30000);
+        if (pt == 'yq') {
+            getChart12Data(-4);
+            $('#zt').click();
+            return;
+        }
+        if (pt == 'zt') {
+            getChart12Data(-3);
+            $('#yq').click();
+            return;
+        }
+    }, 60000);
     //动态调整大小
     window.onresize = function() {
         chart1.resize();

@@ -155,6 +155,11 @@ $(function() {
     //构造柱状图数据
     var barTotal = 1000;
     var barPercent = 700;
+    var barOption1CircleData = [{
+        value: [0, 0],
+        symbolSize: [150, 40],
+        itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#01d7ed' }, { offset: 1, color: '#01d7ed' }]), opacity: .95 },
+    }];
     var barOption1 = {
         color: [color],
         grid: {
@@ -204,19 +209,16 @@ $(function() {
             z: 11,
             data: [{ value: barTotal, symbolPosition: 'start', itemStyle: { color: '#438afe' } }]
         }, {
-            name: '底部内圈颜色',
-            type: 'pictorialBar',
-            symbolSize: ['60%', 45],
-            symbolOffset: [0, 32],
-            z: 1,
-            data: [{ value: barTotal, itemStyle: { color: 'transparent', borderColor: '#43bafe', borderWidth: 5 } }]
+            type: 'effectScatter',
+            symbolSize: function(val) { return Math.max(val[2] / 100, 8); },
+            showEffectOn: 'render',
+            rippleEffect: { brushType: 'stroke' },
+            hoverAnimation: true,
+            data: barOption1CircleData,
         }, {
-            name: '底部外圈颜色',
-            type: 'pictorialBar',
-            symbolSize: ['80%', 70],
-            symbolOffset: [0, 47],
-            z: 1,
-            data: [{ value: barTotal, itemStyle: { color: 'transparent', borderColor: '#43bafe', borderWidth: 5, borderType: 'dashed' } }]
+            type: 'effectScatter',
+            symbolSize: function(val) { return Math.max(val[2] / 200, 8); },
+            data: barOption1CircleData,
         }, {
             type: 'bar',
             barWidth: '32.5%',
