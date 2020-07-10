@@ -76,6 +76,11 @@ $(function() {
             $('#tnox').text(Util.numberSplit(data.data[0].tnox / 1000 / 10000));
             $('#toil').text(Util.numberSplit(data.data[0].toil / 10000));
             $('#tvehnum').text(Util.numberSplit(data.data[0].tvehnum));
+
+
+            $('#ddur_p').text('占比：' + (data.data[0].ddur / (data.data[0].tdur + data.data[0].ddur)).toFixed(2) * 100 + '%');
+            $('#dnox_p').text('占比：' + (data.data[0].dnox / data.data[0].tnox).toFixed(2) * 100 + '%');
+            $('#doil_p').text('占比：' + (data.data[0].doil / data.data[0].toil).toFixed(2) * 100 + '%');
         }
     });
     $.ajax({
@@ -261,7 +266,7 @@ $(function() {
         }],
         yAxis: [{
             type: 'value',
-            name: '条',
+            name: '辆',
             nameTextStyle: { color: '#fff' },
             axisLabel: { color: '#fff' },
             axisLine: { lineStyle: { color: axisColor } },

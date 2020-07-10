@@ -1,0 +1,93 @@
+<script type="text/javascript">
+    var _para;
+    var aa;
+    var app = angular.module('app', []);
+    app.controller('indexCtrl', function($scope, $http) {
+        $scope.remove = function(i, arr) {
+            if (arr.length === 1) {
+                return;
+            }
+            arr.splice(i, 1);
+        };
+        $scope.data = function() {
+            $scope.dataString = JSON.stringify($scope.groupA);
+        };
+        $scope.scrollToBottom = function() {
+            setTimeout(function() {
+                var ele = document.getElementById('dataTable');
+                ele.scrollTop = ele.scrollHeight;
+            }, 10);
+        };
+    });
+
+    function init() {
+        alert("init方法执行了");
+    }
+    getData1 = function(args) {
+        alert("hehehehehehe");
+        if (args.success) {
+            var temp = JSON.parse(args.objLogList);
+            console.log("temp====" + args.objLogList);
+            //通过controller来获取Angular应用
+            var appElement = document.querySelector('[ng-controller="indexCtrl"]');
+            console.log("appElement====" + appElement);
+            //获取$scope变量
+            console.log(" angular.element(appElement)" + angular.element(appElement))
+                //                var $scope = angular.element(appElement).scope();
+            console.log("$scope====" + $scope);
+            $scope.groupA = temp;
+            console.log("$scope.groupA = temp;", $scope.groupA);
+            console.log('$scope.groupA', $scope.groupA);
+            var ttEle1 = document.getElementsByClassName("tt1");
+            var ttEle2 = document.getElementsByClassName("tt2");
+            ttEle1[0].focus();
+            ttEle2[0].focus();
+            ttEle2[0].blur();
+        }
+    }
+
+    function getData(xhr, status, args) {
+        PF('addDFMEADlg').show();
+        acceptFmeaData(xhr, status, args);
+    }
+
+    function acceptFmeaData(xhr, status, args) {
+        if (args.success) {
+            var temp = JSON.parse(args.objLogList);
+            console.log("temp====" + args.objLogList);
+            //通过controller来获取Angular应用
+            var appElement = document.querySelector('[ng-controller="indexCtrl"]');
+            console.log("appElement====" + appElement);
+            //获取$scope变量
+            var $scope = angular.element(appElement).scope();
+            console.log("$scope====" + $scope);
+            $scope.groupA = temp;
+            console.log("$scope.groupA = temp;", $scope.groupA);
+            console.log('$scope.groupA', $scope.groupA);
+            var ttEle1 = document.getElementsByClassName("tt1");
+            var ttEle2 = document.getElementsByClassName("tt2");
+            ttEle1[0].focus();
+            ttEle2[0].focus();
+            ttEle2[0].blur();
+        }
+    }
+
+    function saveFmeaData() {
+        var appElement = document.querySelector('[ng-controller="indexCtrl"]');
+        //获取$scope变量
+        var $scope = angular.element(appElement).scope();
+        _para = $scope.groupA;
+        rm_savaFmeaDate([{
+            name: 'para',
+            value: JSON.stringify(_para)
+        }]);
+    }
+    //                $(window).resize(function () {
+    //                    console.log((window.innerHeight - 200) + 'px');
+    //                    $('.content-wrapper').css('max-height', (window.innerHeight - 200) + 'px');
+    //                });
+    $('.content-wrapper').css('max-height', (window.innerHeight - 210) + 'px');
+    window.onresize = function() {
+        $('.content-wrapper').css('max-height', (window.innerHeight - 210) + 'px');
+    };
+</script>
