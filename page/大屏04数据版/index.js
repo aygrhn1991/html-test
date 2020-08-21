@@ -78,9 +78,9 @@ $(function() {
             $('#tvehnum').text(Util.numberSplit(data.data[0].tvehnum));
 
 
-            $('#ddur_p').text('占比：' + (data.data[0].ddur / (data.data[0].tdur + data.data[0].ddur)).toFixed(2) * 100 + '%');
-            $('#dnox_p').text('占比：' + (data.data[0].dnox / data.data[0].tnox).toFixed(2) * 100 + '%');
-            $('#doil_p').text('占比：' + (data.data[0].doil / data.data[0].toil).toFixed(2) * 100 + '%');
+            $('#ddur_p').text('占比：' + (data.data[0].ddur / (data.data[0].tdur + data.data[0].ddur) * 100).toFixed(2) + '%');
+            $('#dnox_p').text('占比：' + (data.data[0].dnox / data.data[0].tnox * 100).toFixed(2) + '%');
+            $('#doil_p').text('占比：' + (data.data[0].doil / data.data[0].toil * 100).toFixed(2) + '%');
         }
     });
     $.ajax({
