@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>航天科技车联网云平台数据中心</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- <link rel="stylesheet" href="./index.css" />
+    <script type="text/javascript" src="../../plugin/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../../plugin/echarts/echarts.js"></script>
+    <script type="text/javascript" src="../../plugin/echarts/echarts-liquidfill.js"></script>
+    <script type="text/javascript" src="../../plugin/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="../../plugin/util/util.js"></script>
+    <script type="text/javascript" src="./index.js"></script> -->
+
+    <link rel="stylesheet" href="./index.css" />
+    <script type="text/javascript" src="./jquery.js"></script>
+    <script type="text/javascript" src="./echarts.js"></script>
+    <script type="text/javascript" src="./echarts-liquidfill.js"></script>
+    <script type="text/javascript" src="./china.js"></script>
+    <script type="text/javascript" src="./util.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="head">
+            <div class="city-and-weather"></div>
+            <div class="head-title">航天科技车联网云平台数据中心</div>
+            <div class="date"></div>
+            <img src="./img/full.png" class="full">
+            <img src="./img/close.png" class="close">
+        </div>
+        <div class="left border2">
+            <div class="border-shadow"></div>
+            <div class="title border1">平台数据统计</div>
+            <div class="left-1">
+                <div class="left-1-block">
+                    <div class="block-text">总里程</div>
+                    <div class="block-num"><label id="tmil">0</label><span>万km</span></div>
+                </div>
+                <div class="left-1-block">
+                    <div class="block-text">总排放</div>
+                    <div class="block-num"><label id="tnox">0</label><span>万kg</span></div>
+                </div>
+                <div class="left-1-block">
+                    <div class="block-text">总能耗</div>
+                    <div class="block-num"><label id="toil">0</label><span>万L</span></div>
+                </div>
+                <div class="left-1-block">
+                    <div class="block-text">总运行时长</div>
+                    <div class="block-num"><label id="tdur">0</label><span>万h</span></div>
+                </div>
+            </div>
+            <div class="left-2">
+                <div class="left-2-block block border">
+                    <div class="block-text" style="margin-top:20px;">总怠速时长</div>
+                    <div class="block-num"><label id="ddur">0</label><span>万h</span></div>
+                    <div id="ddur_p" style="font-size:12px;"></div>
+                </div>
+                <div class="left-2-block block border">
+                    <div class="block-text" style="margin-top:20px;">总怠速能耗</div>
+                    <div class="block-num"><label id="doil">0</label><span>万L</span></div>
+                    <div id="doil_p" style="font-size:12px;"></div>
+                </div>
+                <div class="left-2-block block border">
+                    <div class="block-text" style="margin-top:20px;">总怠速排放</div>
+                    <div class="block-num"><label id="dnox">0</label><span>万kg</span></div>
+                    <div id="dnox_p" style="font-size:12px;"></div>
+                </div>
+            </div>
+            <div class="left-3">
+                <div class="left-3-block left-3-block1">
+                    <div class="block-content">
+                        <div class="left-3-block-num"><label id="tvehnum">0</label><span>辆</span></div>
+                        <div class="left-3-block-text">总车数</div>
+                    </div>
+                </div>
+                <div class="left-3-block left-3-block2">
+                    <div class="block-content">
+                        <div class="left-3-block-num"><label id="fnum">0</label><span>万次</span></div>
+                        <div class="left-3-block-text">总故障</div>
+                    </div>
+                </div>
+                <div class="left-3-block left-3-block3">
+                    <div class="block-content">
+                        <div class="left-3-block-num"><label id="tengnum">0</label><span>万条</span></div>
+                        <div class="left-3-block-text">总数据量</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center border2">
+            <div class="border-shadow"></div>
+            <div class="title border1">分中心数据统计</div>
+            <div class="center-1">
+                <div class="center-1-block">
+                    <div class="center-1-block-item center-1-block-item1 center-active" id="yq">一汽解放分中心</div>
+                    <div class="center-1-block-item center-1-block-item2" id="zt">中通客车分中心</div>
+                </div>
+            </div>
+            <div class="center-2">
+                <div class="block-content">
+                    <div class="center-2-wrapper">
+                        <img src="./img/float1.png" class="center-2-item center-2-item-1">
+                        <img src="./img/float1.png" class="center-2-item center-2-item-2">
+                        <img src="./img/float1.png" class="center-2-item center-2-item-3">
+                        <img src="./img/float1.png" class="center-2-item center-2-item-4">
+                        <img src="./img/float1.png" class="center-2-item center-2-item-5">
+                        <img src="./img/float1.png" class="center-2-item center-2-item-6">
+                        <img src="./img/line.png" class="center-2-line center-2-line-1">
+                        <img src="./img/line.png" class="center-2-line center-2-line-2">
+                        <img src="./img/line.png" class="center-2-line center-2-line-3">
+                        <img src="./img/line.png" class="center-2-line center-2-line-4">
+                        <img src="./img/line.png" class="center-2-line center-2-line-5">
+                        <img src="./img/line.png" class="center-2-line center-2-line-6">
+                        <img src="./img/arrow.png" class="center-2-arrow center-2-arrow-1">
+                        <img src="./img/arrow.png" class="center-2-arrow center-2-arrow-2">
+                        <img src="./img/arrow.png" class="center-2-arrow center-2-arrow-3">
+                        <img src="./img/arrow.png" class="center-2-arrow center-2-arrow-4">
+                        <img src="./img/arrow.png" class="center-2-arrow center-2-arrow-5">
+                        <img src="./img/arrow.png" class="center-2-arrow center-2-arrow-6">
+                        <div class="center-2-wave">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right border2">
+            <div class="border-shadow"></div>
+            <div class="title border1">运维数据</div>
+            <div class="right-1">
+                <div class="right-1-block block border">
+                    <div class="block-text">当前在线车辆</div>
+                    <div class="block-num"><label id="onum">0</label><span>辆</span></div>
+                </div>
+                <div class="right-1-block block border">
+                    <div class="block-text">今日上线车辆</div>
+                    <div class="block-num"><label id="dnum">0</label><span>辆</span></div>
+                </div>
+                <div class="right-1-block block border">
+                    <div class="block-text">接收数据</div>
+                    <div class="block-num"><label id="datanum">0</label><span>万条</span></div>
+                </div>
+                <div id="chart5"></div>
+            </div>
+            <div class="right-2 border">
+                <div class="right2-title">一汽解放</div>
+                <div id="chart1"></div>
+                <div id="chart2"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
